@@ -1,8 +1,9 @@
-import '../styles/globals.css';
-import createCache from '@emotion/cache';
-import { CacheProvider } from '@emotion/react';
+import "../styles/globals.css";
+import createCache from "@emotion/cache";
+import { CacheProvider } from "@emotion/react";
+import { StoreProvider } from "./utils/Store";
 
-const clientSideEmotionCache = createCache({ key: 'css' });
+const clientSideEmotionCache = createCache({ key: "css" });
 
 function MyApp({
   Component,
@@ -11,9 +12,11 @@ function MyApp({
 }) {
   return (
     <CacheProvider value={emotionCache}>
-      <Component {...pageProps} />
+      <StoreProvider>
+        <Component {...pageProps} />
+      </StoreProvider>
     </CacheProvider>
   );
 }
 
-export default MyApp
+export default MyApp;
