@@ -1,6 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 import {
   AppBar,
+  Badge,
   Box,
   Container,
   CssBaseline,
@@ -19,7 +20,7 @@ import jsCookie from "js-cookie";
 
 export default function Layout({ title, description, children }) {
   const { state, dispatch } = useContext(Store);
-  const { darkMode } = state;
+  const { darkMode, cart } = state;
   const theme = createTheme({
     components: {
       MuiLink: {
@@ -43,10 +44,13 @@ export default function Layout({ title, description, children }) {
     palette: {
       mode: darkMode ? "dark" : "light",
       primary: {
-        main: "#f0c000",
+        main: "#1175bc",
       },
       secondary: {
-        main: "#208080",
+        main: "#283e95",
+      },
+      tertiary: {
+        main: "#a8c7e5",
       },
     },
   });
@@ -77,6 +81,22 @@ export default function Layout({ title, description, children }) {
                 checked={darkMode}
                 onChange={darkModeChangeHandler}
               ></Switch>
+              <NextLink href="/cart" passHref>
+                <Link>
+                  <Typography component="span">
+                    {cart.cartItems.length > 0 ? (
+                      <Badge
+                        color="tertiary"
+                        badgeContent={cart.cartItems.length}
+                      >
+                        Cart
+                      </Badge>
+                    ) : (
+                      "Cart"
+                    )}
+                  </Typography>
+                </Link>
+              </NextLink>
             </Box>
           </Toolbar>
         </AppBar>

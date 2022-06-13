@@ -16,13 +16,15 @@ import NextLink from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
 import Layout from "../../layout";
-import classes from "../classes";
-import client from "../client";
-import { urlFor, urlForThumbnail } from "../image";
-import { Store } from "../Store";
+import classes from "../../utils/classes";
+import client from "../../utils/client";
+import { urlFor, urlForThumbnail } from "../../utils/image";
+import { Store } from "../../utils/Store";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function ProductScreen(props) {
+  const router = useRouter();
   const { slug } = props;
   const {
     state: { cart },
@@ -50,7 +52,6 @@ export default function ProductScreen(props) {
     };
     fetchData();
   }, []);
-
   const addToCartHandler = async () => {
     const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
@@ -74,6 +75,7 @@ export default function ProductScreen(props) {
     enqueueSnackbar(`${product.name} added to the cart`, {
       variant: "success",
     });
+    router.push("/cart");
   };
   return (
     <Layout title={product?.title}>
