@@ -69,7 +69,7 @@ function CartScreen() {
         <Box>
           <Typography>
             Cart is empty.{" "}
-            <NextLink href="/" passHref>
+            <NextLink href="/StorePage" passHref>
               <Link>Go shopping</Link>
             </NextLink>
           </Typography>
