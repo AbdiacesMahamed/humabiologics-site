@@ -3,6 +3,7 @@ import Layout from "../layout";
 import { useForm, Controller } from "react-hook-form";
 import NextLink from "next/link";
 import Form from "../../Humabiologics/components/form";
+import { getError } from "./error";
 import {
   Button,
   Link,
@@ -51,7 +52,7 @@ export default function RegisterScreen() {
       jsCookie.set("userInfo", JSON.stringify(data));
       router.push("/StorePage");
     } catch (err) {
-      enqueueSnackbar(err.message, { variant: "error" });
+      enqueueSnackbar(getError(err), { variant: "error" });
     }
   };
   return (

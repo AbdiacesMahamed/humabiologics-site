@@ -32,7 +32,7 @@ export default function ProductItem({ product, addToCartHandler }) {
         <Typography>${product.price}</Typography>
         <Button
           size="small"
-          color="primary"
+          color="tertiary"
           onClick={() => addToCartHandler(product)}
         >
           Add to Cart
