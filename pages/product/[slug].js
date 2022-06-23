@@ -15,7 +15,7 @@ import Image from "next/image";
 import NextLink from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
-import Layout from "../../layout";
+import Layout from "../../components/Layout";
 import classes from "../../utils/classes";
 import client from "../../utils/client";
 import { urlFor, urlForThumbnail } from "../../utils/image";
@@ -42,7 +42,7 @@ export default function ProductScreen(props) {
       try {
         const product = await client.fetch(
           `
-            *[_type == "product" && slug.current == $slug][0]`,
+              *[_type == "product" && slug.current == $slug][0]`,
           { slug }
         );
         setState({ ...state, product, loading: false });
@@ -52,6 +52,7 @@ export default function ProductScreen(props) {
     };
     fetchData();
   }, []);
+
   const addToCartHandler = async () => {
     const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
@@ -86,9 +87,9 @@ export default function ProductScreen(props) {
       ) : (
         <Box>
           <Box sx={classes.section}>
-            <NextLink href="/StorePage" passHref>
+            <NextLink href="/" passHref>
               <Link>
-                <Typography>Back to Result</Typography>
+                <Typography>back to result</Typography>
               </Link>
             </NextLink>
           </Box>
@@ -167,6 +168,7 @@ export default function ProductScreen(props) {
     </Layout>
   );
 }
+
 export function getServerSideProps(context) {
   return {
     props: { slug: context.params.slug },

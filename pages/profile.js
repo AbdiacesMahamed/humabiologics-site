@@ -1,66 +1,65 @@
-import React from "react";
-import Layout from "../layout";
-import { useForm, Controller } from "react-hook-form";
-import NextLink from "next/link";
-import Form from "../../Humabiologics/components/form";
-import { getError } from "./error";
-import {
-  Button,
-  Link,
-  List,
-  ListItem,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { useSnackbar } from "notistack";
+import { Button, List, ListItem, TextField, Typography } from "@mui/material";
 import axios from "axios";
+import jsCookie from "js-cookie";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { useContext } from "react";
-import { Store } from "./Store";
-import { useEffect } from "react";
+import { useSnackbar } from "notistack";
+import React, { useContext, useEffect } from "react";
+import { Controller, useForm } from "react-hook-form";
+import Form from "../components/Form";
+import Layout from "../components/Layout";
+import { getError } from "../utils/error";
+import { Store } from "../utils/Store";
 
-export default function RegisterScreen() {
+function ProfileScreen() {
+  const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
-  const router = useRouter();
-  useEffect(() => {
-    if (userInfo) {
-      router.push("/StorePage");
-    }
-  }, [router, userInfo]);
-
   const {
     handleSubmit,
     control,
     formState: { errors },
+    setValue,
   } = useForm();
 
-  const { enqueueSnackbar } = useSnackbar();
+  useEffect(() => {
+    if (!userInfo) {
+      return router.push("/login");
+    }
+    setValue("name", userInfo.name);
+    setValue("email", userInfo.email);
+  }, [router, setValue, userInfo]);
 
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const submitHandler = async ({ name, email, password, confirmPassword }) => {
+    closeSnackbar();
     if (password !== confirmPassword) {
       enqueueSnackbar("Passwords don't match", { variant: "error" });
       return;
     }
     try {
-      const { data } = await axios.post("/api/users/register", {
-        name,
-        email,
-        password,
-      });
+      const { data } = await axios.put(
+        "/api/users/profile",
+        {
+          name,
+          email,
+          password,
+        },
+        { headers: { authorization: `Bearer ${userInfo.token}` } }
+      );
       dispatch({ type: "USER_LOGIN", payload: data });
       jsCookie.set("userInfo", JSON.stringify(data));
-      router.push("/StorePage");
+      enqueueSnackbar("Profile updated successfully", { variant: "success" });
     } catch (err) {
       enqueueSnackbar(getError(err), { variant: "error" });
     }
   };
   return (
-    <Layout title="Register">
+    <Layout title="Profile">
+      <Typography component="h1" variant="h1">
+        Profile
+      </Typography>
       <Form onSubmit={handleSubmit(submitHandler)}>
-        <Typography component="h1" variant="h1">
-          Register
-        </Typography>
         <List>
           <ListItem>
             <Controller
@@ -77,7 +76,7 @@ export default function RegisterScreen() {
                   fullWidth
                   id="name"
                   label="Name"
-                  inputProps={{ type: "name" }}
+                  inputProps={{ type: "text" }}
                   error={Boolean(errors.name)}
                   helperText={
                     errors.name
@@ -126,23 +125,21 @@ export default function RegisterScreen() {
               control={control}
               defaultValue=""
               rules={{
-                required: true,
-                minLength: 6,
+                validate: (value) =>
+                  value === "" ||
+                  value.length > 5 ||
+                  "Password length is more than 5",
               }}
               render={({ field }) => (
                 <TextField
                   variant="outlined"
                   fullWidth
                   id="password"
-                  label="Password"
+                  label="password"
                   inputProps={{ type: "password" }}
                   error={Boolean(errors.password)}
                   helperText={
-                    errors.password
-                      ? errors.password.type === "minLength"
-                        ? "Password length is more than 5"
-                        : "Password is required"
-                      : ""
+                    errors.password ? "Password length is more than 5" : ""
                   }
                   {...field}
                 ></TextField>
@@ -155,8 +152,10 @@ export default function RegisterScreen() {
               control={control}
               defaultValue=""
               rules={{
-                required: true,
-                minLength: 6,
+                validate: (value) =>
+                  value === "" ||
+                  value.length > 5 ||
+                  "confirmPassword length is more than 5",
               }}
               render={({ field }) => (
                 <TextField
@@ -168,9 +167,7 @@ export default function RegisterScreen() {
                   error={Boolean(errors.confirmPassword)}
                   helperText={
                     errors.confirmPassword
-                      ? errors.confirmPassword.type === "minLength"
-                        ? "Confirm Password length is more than 5"
-                        : "Confirm Password is required"
+                      ? "Confirm Password length is more than 5"
                       : ""
                   }
                   {...field}
@@ -180,17 +177,13 @@ export default function RegisterScreen() {
           </ListItem>
           <ListItem>
             <Button variant="contained" type="submit" fullWidth color="primary">
-              Register
+              Update
             </Button>
-          </ListItem>
-          <ListItem>
-            Already have an account?{" "}
-            <NextLink href={"/login"} passHref>
-              <Link>Login</Link>
-            </NextLink>
           </ListItem>
         </List>
       </Form>
     </Layout>
   );
 }
+
+export default dynamic(() => Promise.resolve(ProfileScreen), { ssr: false });

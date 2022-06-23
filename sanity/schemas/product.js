@@ -8,13 +8,11 @@ export default {
       title: "Name",
       type: "string",
     },
-
     {
       name: "price",
       title: "Price",
       type: "number",
     },
-
     {
       name: "image",
       title: "Image",
@@ -23,13 +21,11 @@ export default {
         hotspot: true,
       },
     },
-
     {
       name: "description",
       title: "Description",
       type: "string",
     },
-
     {
       name: "slug",
       title: "Slug",
@@ -39,19 +35,16 @@ export default {
         maxLength: 96,
       },
     },
-
     {
       name: "brand",
       title: "Brand",
       type: "string",
     },
-
     {
       name: "category",
       title: "Category",
       type: "string",
     },
-
     {
       name: "rating",
       title: "Rating",
@@ -63,7 +56,6 @@ export default {
       title: "NumReviews",
       type: "number",
     },
-
     {
       name: "countInStock",
       title: "CountInStock",

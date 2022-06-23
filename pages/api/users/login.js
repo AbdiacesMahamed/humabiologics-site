@@ -1,7 +1,7 @@
 import nc from "next-connect";
 import bcrypt from "bcryptjs";
-import { signToken } from "../../utils/auth";
-import client from "../../utils/client";
+import { signToken } from "../../../utils/auth";
+import client from "../../../utils/client";
 
 const handler = nc();
 

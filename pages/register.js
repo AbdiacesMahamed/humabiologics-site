@@ -13,21 +13,23 @@ import {
 } from "@mui/material";
 import { useSnackbar } from "notistack";
 import axios from "axios";
-import { Store } from "../utils/Store";
-import { useRouter } from "next/router";
 import jsCookie from "js-cookie";
+import { useRouter } from "next/router";
+import { Store } from "../utils/Store";
 import { getError } from "../utils/error";
 
-export default function LoginScreen() {
+export default function RegisterScreen() {
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
   const router = useRouter();
   const { redirect } = router.query;
+
   useEffect(() => {
     if (userInfo) {
       router.push(redirect || "/");
     }
   }, [router, userInfo, redirect]);
+
   const {
     handleSubmit,
     control,
@@ -35,9 +37,15 @@ export default function LoginScreen() {
   } = useForm();
 
   const { enqueueSnackbar } = useSnackbar();
-  const submitHandler = async ({ email, password }) => {
+
+  const submitHandler = async ({ name, email, password, confirmPassword }) => {
+    if (password !== confirmPassword) {
+      enqueueSnackbar("Passwords don't match", { variant: "error" });
+      return;
+    }
     try {
-      const { data } = await axios.post("/api/users/login", {
+      const { data } = await axios.post("/api/users/register", {
+        name,
         email,
         password,
       });
@@ -49,12 +57,42 @@ export default function LoginScreen() {
     }
   };
   return (
-    <Layout title="Login">
+    <Layout title="Register">
       <Form onSubmit={handleSubmit(submitHandler)}>
         <Typography component="h1" variant="h1">
-          Login
+          Register
         </Typography>
         <List>
+          <ListItem>
+            <Controller
+              name="name"
+              control={control}
+              defaultValue=""
+              rules={{
+                required: true,
+                minLength: 2,
+              }}
+              render={({ field }) => (
+                <TextField
+                  variant="outlined"
+                  fullWidth
+                  id="name"
+                  label="Name"
+                  inputProps={{ type: "name" }}
+                  error={Boolean(errors.name)}
+                  helperText={
+                    errors.name
+                      ? errors.name.type === "minLength"
+                        ? "Name length is more than 1"
+                        : "Name is required"
+                      : ""
+                  }
+                  {...field}
+                ></TextField>
+              )}
+            ></Controller>
+          </ListItem>
+
           <ListItem>
             <Controller
               name="email"
@@ -114,14 +152,43 @@ export default function LoginScreen() {
             ></Controller>
           </ListItem>
           <ListItem>
+            <Controller
+              name="confirmPassword"
+              control={control}
+              defaultValue=""
+              rules={{
+                required: true,
+                minLength: 6,
+              }}
+              render={({ field }) => (
+                <TextField
+                  variant="outlined"
+                  fullWidth
+                  id="confirmPassword"
+                  label="Confirm Password"
+                  inputProps={{ type: "password" }}
+                  error={Boolean(errors.confirmPassword)}
+                  helperText={
+                    errors.confirmPassword
+                      ? errors.confirmPassword.type === "minLength"
+                        ? "Confirm Password length is more than 5"
+                        : "Confirm Password is required"
+                      : ""
+                  }
+                  {...field}
+                ></TextField>
+              )}
+            ></Controller>
+          </ListItem>
+          <ListItem>
             <Button variant="contained" type="submit" fullWidth color="primary">
-              Login
+              Register
             </Button>
           </ListItem>
           <ListItem>
-            Do not have an account?{" "}
-            <NextLink href={`/register?redirect=${redirect || "/"}`} passHref>
-              <Link>Register</Link>
+            Already have an account?{" "}
+            <NextLink href={`/login?redirect=${redirect || "/"}`} passHref>
+              <Link>Login</Link>
             </NextLink>
           </ListItem>
         </List>

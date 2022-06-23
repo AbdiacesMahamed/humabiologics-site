@@ -9,4 +9,4 @@ function urlFor(source) {
   return ImageUrlBuilder(client).image(source).width(580).url();
 }
 
-export { urlForThumbnail, urlFor };
+export { urlFor, urlForThumbnail };
