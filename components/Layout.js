@@ -119,10 +119,6 @@ export default function Layout({ title, description, children }) {
 
   const isDesktop = useMediaQuery("(min-width:600px)");
 
-  const [query, setQuery] = useState("");
-  const queryChangeHandler = (e) => {
-    setQuery(e.target.value);
-  };
   const submitHandler = (e) => {
     e.preventDefault();
     router.push(`/search?query=${query}`);
@@ -147,7 +143,7 @@ export default function Layout({ title, description, children }) {
               >
                 <MenuIcon sx={classes.navbarButton} />
               </IconButton>
-              <NextLink href="/" passHref>
+              <NextLink href="/Homepage" passHref>
                 <Link>
                   <Typography sx={classes.brand}>Humabiologics</Typography>
                 </Link>
