@@ -40,6 +40,9 @@ export default function Layout({ title, description, children }) {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { darkMode, cart, userInfo } = state;
+  const queryChangeHandler = (e) => {
+    setQuery(e.target.value);
+  };
   const theme = createTheme({
     components: {
       MuiLink: {

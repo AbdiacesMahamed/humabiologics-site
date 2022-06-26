@@ -34,12 +34,9 @@ function Navbar() {
     <div className={styles.top}>
       <nav className={styles.nav}>
         <ul className={open}>
-          <li className={styles.links}>a</li>
-          <li className={styles.links}>a</li>
-          <li className={styles.links}>a</li>
-          <NextLink href="/" passhref>
-            <li className={styles.links}>a</li>
-          </NextLink>
+          <li className={styles.links}>HUMAN BIOMATERIALS</li>
+          <li className={styles.links}>COMPANY</li>
+          <li className={styles.links}>NEWS</li>
         </ul>
         <div className={styles.burger} onClick={dropdown}>
           <div className={styles.line1}></div>

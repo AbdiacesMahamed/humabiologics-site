@@ -1,7 +1,95 @@
 .top {
   position: relative;
-  top: 30vh;
+  top: 6px;
   padding: 0%;
   margin: 0%;
   box-sizing: border-box;
+}
+
+.line1 {
+  width: 90vw;
+  height: 1vh;
+  background-color: #283e95;
+  position: absolute;
+  top: 27vh;
+  left: 8vh;
+}
+
+.section1 {
+  background-color: white;
+  height: 120vh;
+  position: relative;
+  top: 12vh;
+  z-index: -1;
+}
+.fullscreen {
+  position: relative;
+  top: 50vh;
+  left: 50vw;
+  min-width: 100vw;
+
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+}
+.body {
+  position: relative;
+  padding: 0%;
+  margin: 0%;
+  overflow: hidden;
+}
+
+.section2 {
+  height: 100vh;
+  background-color: beige;
+  position: relative;
+  top: 13vh;
+  z-index: -1;
+}
+
+.biomaterialsContainer {
+  position: absolute;
+  left: 30vw;
+  width: 35vw;
+  background-color: red;
+  font-size: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.sideLine1 {
+  height: 3vh;
+  background-color: blue;
+  width: 20vw;
+  position: absolute;
+  top: 30px;
+}
+
+.sideLine2 {
+  height: 3vh;
+  background-color: blue;
+  width: 20vw;
+  position: absolute;
+  top: 30px;
+  right: 0px;
+}
+
+.imageBar {
+  width: 100vw;
+  height: 30vw;
+  background-color: aquamarine;
+  position: absolute;
+  top: 10vw;
+  margin: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.circle {
+  background-color: blue;
+  height: 10px;
+  width: 10px;
+  margin: 10px;
 }

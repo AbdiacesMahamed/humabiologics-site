@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: blanchedalmond;
+  background-color: red;
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
@@ -11,11 +11,23 @@
   width: 100vw;
 }
 
+.header {
+  background-color: blueviolet;
+  height: 10vh;
+  position: relative;
+}
+
 .right {
   position: absolute;
   right: 19px;
   margin: 0%;
   padding: 0%;
+}
+.links {
+  cursor: pointer;
+  color: #283e95;
+  font-size: 26px;
+  font-weight: 500;
 }
 
 .navLinks {
@@ -23,9 +35,9 @@
   left: 10vw;
   display: flex;
   list-style-type: none;
-  background-color: red;
-  justify-content: space-around;
-  width: 40%;
+  background-color: white;
+  justify-content: space-between;
+  width: 60%;
   margin: 0px;
   padding: 0%;
   transition: transform 0.5s ease;
@@ -41,25 +53,25 @@
 .line1 {
   margin: 4px;
   height: 3px;
-  background-color: white;
+  background-color: #283e95;
 }
 
 .line2 {
   margin: 4px;
   height: 3px;
-  background-color: white;
+  background-color: #283e95;
 }
 
 .line3 {
   margin: 4px;
   height: 3px;
-  background-color: white;
+  background-color: #283e95;
 }
 
 .navActive {
   display: flex;
   list-style-type: none;
-  background-color: red;
+  background-color: white;
   justify-content: space-around;
   width: 40%;
   margin: 0px;
@@ -95,7 +107,7 @@
     flex-direction: column;
     align-items: center;
     transform: translateX(0%);
-    background-color: blue;
+    background-color: white;
     margin: 0%;
     width: 40%;
     list-style: none;
@@ -105,6 +117,8 @@
   }
   .links {
     cursor: pointer;
+    color: #283e95;
+    font-size: 20px;
   }
 }
 
