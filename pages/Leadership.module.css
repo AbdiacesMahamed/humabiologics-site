@@ -1,0 +1,37 @@
+.body {
+  position: relative;
+}
+
+.top {
+  position: relative;
+  top: 6px;
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+}
+
+.line1 {
+  width: 90vw;
+  height: 1vh;
+  background-color: #283e95;
+  position: absolute;
+  top: 27vh;
+  left: 8vh;
+}
+
+.textContainer {
+  position: absolute;
+  left: 35vw;
+  top: 120vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topText {
+  font-size: larger;
+  font-weight: 600;
+}
+
+.bottomText {
+  font-size: large;
+}

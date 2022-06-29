@@ -2,13 +2,58 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: red;
+  background-color: white;
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
   height: 8vh;
 
   width: 100vw;
+}
+
+.dropdownActive {
+  transition: transform 0.5s ease;
+  height: 30vh;
+  background-color: #283e95;
+  color: white;
+  margin: 0%;
+  list-style: none;
+}
+.dropdown {
+  display: none;
+  transition: transform 0.5s ease;
+  margin: 0%;
+  list-style: none;
+  position: relative;
+}
+
+.nonDecor {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-width: 35vw;
+
+  height: 30vh;
+  font-size: 32px;
+  margin: 0%;
+  font-weight: 600;
+  font-family: arial;
+}
+.nonDecor2 {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-width: 35vw;
+
+  height: 30vh;
+  font-size: 32px;
+  position: relative;
+  left: 35vw;
+  top: -35vh;
+  font-weight: 600;
+  font-family: arial;
 }
 
 .header {
@@ -26,8 +71,15 @@
 .links {
   cursor: pointer;
   color: #283e95;
+  font-size: 20px;
+  font-weight: 640;
+}
+.links2 {
+  cursor: pointer;
+  color: white;
   font-size: 26px;
   font-weight: 500;
+  margin: 10px;
 }
 
 .navLinks {
@@ -48,12 +100,6 @@
   margin: 5px;
   cursor: pointer;
   display: none;
-}
-
-.line1 {
-  margin: 4px;
-  height: 3px;
-  background-color: #283e95;
 }
 
 .line2 {
@@ -78,7 +124,7 @@
   padding: 0%;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 868px) {
   .burger {
     display: block;
     position: relative;
@@ -119,6 +165,14 @@
     cursor: pointer;
     color: #283e95;
     font-size: 20px;
+  }
+  .nonDecor {
+    font-size: 20px;
+  }
+  .nonDecor2 {
+    font-size: 20px;
+    position: rel;
+    top: 5.1vh;
   }
 }
 

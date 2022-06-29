@@ -1,13 +1,56 @@
 .container {
   padding: 0%;
   margin: 0%;
-  background-color: blueviolet;
+  background-color: white;
   height: 27vh;
-  z-index: -1;
+
+  position: relative;
+  left: 10vw;
 }
 
 .logo {
   height: 20vh;
   width: 20vw;
-  background-image: url("/public/images/HumabiologicsLogo.png");
+  position: relative;
+  left: 10vw;
+  cursor: pointer;
+}
+
+.link {
+  position: absolute;
+  right: 10px;
+}
+
+.pill {
+  background-color: #ddd;
+  height: 30px;
+  width: 150px;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  background-color: #283e95;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  position: absolute;
+  right: 10px;
+  top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pill:hover {
+  cursor: pointer;
+}
+
+.accountContainer {
+  background-color: #283e95;
+  color: white;
+  max-width: 30vh;
+  position: absolute;
+  right: 15px;
+  top: 5vh;
 }

@@ -30,16 +30,49 @@ function Navbar() {
     }
   }
 
+  let [second, setsecond] = useState(styles.dropdown);
+  function dropdown2() {
+    if (second === styles.dropdown) {
+      setsecond(styles.dropdownActive);
+    }
+
+    if (second === styles.dropdownActive) {
+      setsecond(styles.dropdown);
+    }
+    if (third === styles.dropdownActive) {
+      setThird(styles.dropdown);
+    }
+  }
+
+  let [third, setThird] = useState(styles.dropdown);
+  function dropdown3() {
+    if (third === styles.dropdown) {
+      setThird(styles.dropdownActive);
+    }
+
+    if (third === styles.dropdownActive) {
+      setThird(styles.dropdown);
+    }
+    if (second === styles.dropdownActive) {
+      setsecond(styles.dropdown);
+    }
+  }
+
   return (
     <div className={styles.top}>
       <nav className={styles.nav}>
         <ul className={open}>
-          <li className={styles.links}>HUMAN BIOMATERIALS</li>
-          <li className={styles.links}>COMPANY</li>
+          <li className={styles.links} onClick={dropdown2}>
+            HUMAN BIOMATERIALS
+          </li>
+
+          <li className={styles.links} onClick={dropdown3}>
+            COMPANY
+          </li>
+
           <li className={styles.links}>NEWS</li>
         </ul>
         <div className={styles.burger} onClick={dropdown}>
-          <div className={styles.line1}></div>
           <div className={styles.line2}></div>
           <div className={styles.line3}></div>
         </div>
@@ -65,6 +98,54 @@ function Navbar() {
           </Box>
         </div>
       </nav>
+
+      <div className={second}>
+        <ul className={styles.nonDecor}>
+          <NextLink href="./HumanBiomaterials">
+            <a>HUMAN COLLAGEN</a>
+          </NextLink>
+          <NextLink href="./HumanBiomaterials">
+            <a>HUMAN GELATIN</a>
+          </NextLink>
+          <NextLink href="./HumanBiomaterials">
+            <a>HUMAN ECM</a>
+          </NextLink>
+          <NextLink href="./HumanBiomaterials">
+            <a>HUMAN BIOINKS</a>
+          </NextLink>
+        </ul>
+        <ul className={styles.nonDecor2}>
+          <NextLink href="/">
+            <a>STORE</a>
+          </NextLink>
+          <NextLink href="/">
+            <a>CERTIFICATE OF ANALYSIS</a>
+          </NextLink>
+          <NextLink href="/">
+            <a>FAQS</a>
+          </NextLink>
+          <NextLink href="/">
+            <a></a>
+          </NextLink>
+        </ul>
+      </div>
+
+      <div className={third}>
+        <ul className={styles.nonDecor}>
+          <NextLink href="./Company">
+            <a>ABOUT US</a>
+          </NextLink>
+          <NextLink href="./Leadership">
+            <a>LEADERSHIP</a>
+          </NextLink>
+          <NextLink href="./Distributor">
+            <a>DISTRIBUTORS</a>
+          </NextLink>
+          <NextLink href="./HumanBiomaterials">
+            <a>QUALITY AND REGULATORY</a>
+          </NextLink>
+        </ul>
+      </div>
     </div>
   );
 }

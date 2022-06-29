@@ -1,0 +1,16 @@
+.section1 {
+  height: 80vh;
+  width: auto;
+}
+.aboutUs {
+  background-color: red;
+  width: 100vw;
+}
+.line1 {
+  width: 90vw;
+  height: 1vh;
+  background-color: #283e95;
+  position: absolute;
+  top: 27vh;
+  left: 8vh;
+}

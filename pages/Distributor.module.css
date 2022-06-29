@@ -1,0 +1,39 @@
+.top {
+  position: relative;
+  top: 6px;
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+}
+
+.line1 {
+  width: 90vw;
+  height: 1vh;
+  background-color: #283e95;
+  position: absolute;
+  top: 27vh;
+  left: 8vh;
+}
+
+.body {
+  position: relative;
+}
+
+.right {
+  position: absolute;
+  left: 8vw;
+  top: 140vh;
+}
+
+.asia {
+  display: none;
+  position: absolute;
+  top: 160vh;
+}
+
+@media screen and (max-width: 900px) {
+  .right {
+    position: absolute;
+    top: 100vh;
+  }
+}

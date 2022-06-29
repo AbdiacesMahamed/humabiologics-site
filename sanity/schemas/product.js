@@ -45,17 +45,7 @@ export default {
       title: "Category",
       type: "string",
     },
-    {
-      name: "rating",
-      title: "Rating",
-      type: "number",
-    },
 
-    {
-      name: "numReviews",
-      title: "NumReviews",
-      type: "number",
-    },
     {
       name: "countInStock",
       title: "CountInStock",
