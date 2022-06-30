@@ -8,7 +8,7 @@ import {
   Link,
   List,
   ListItem,
-  Rating,
+  Select,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
@@ -42,7 +42,7 @@ export default function ProductScreen(props) {
       try {
         const product = await client.fetch(
           `
-              *[_type == "product" && slug.current == $slug][0]`,
+            *[_type == "product" && slug.current == $slug][0]`,
           { slug }
         );
         setState({ ...state, product, loading: false });
@@ -113,10 +113,7 @@ export default function ProductScreen(props) {
                 <ListItem>Category: {product.category}</ListItem>
                 <ListItem>Brand: {product.brand}</ListItem>
                 <ListItem>
-                  <Rating value={product.rating} readOnly></Rating>
-                  <Typography sx={classes.smallText}>
-                    ({product.numReviews} reviews)
-                  </Typography>
+                  <Select></Select>
                 </ListItem>
                 <ListItem>
                   <Typography>Description: {product.description}</Typography>

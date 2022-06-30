@@ -6,6 +6,15 @@
   box-sizing: border-box;
 }
 
+.navTop {
+  width: 100vw;
+  position: absolute;
+  top: 30vh;
+}
+.test {
+  position: absolute;
+  top: 20vh;
+}
 .line1 {
   width: 100vw;
   height: 1vh;
@@ -19,15 +28,16 @@
   background-color: white;
   height: 120vh;
   position: relative;
-  top: 12vh;
+  top: 10vh;
   z-index: -1;
+  margin: 0px;
 }
 .fullscreen {
   position: relative;
   top: 50vh;
   left: 50vw;
   min-width: 100vw;
-
+  margin: 0%;
   min-height: 100%;
   z-index: -100;
   transform: translateX(-50%) translateY(-50%);
@@ -40,10 +50,10 @@
 }
 
 .section2 {
-  height: 49vh;
+  height: 65vh;
   background-color: white;
   position: relative;
-  top: 0vh;
+  top: 5vh;
   z-index: -1;
 }
 

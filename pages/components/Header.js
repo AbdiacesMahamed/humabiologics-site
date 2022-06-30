@@ -33,16 +33,13 @@ function Header() {
     router.push("/");
   };
   return (
-    <div className={styles.test}>
+    <div>
       <section className={styles.container}>
-        <NextLink href="/Homepage">
-          <Image
-            className={styles.logo}
-            width={300}
-            height={170}
-            src="/HumabiologicsLogo.png"
-          ></Image>
-        </NextLink>
+        <div className={styles.logo}>
+          <NextLink href="/Homepage">
+            <Image width={400} height={100} src="/logo.png"></Image>
+          </NextLink>
+        </div>
 
         <div className={styles.accountContainer}>
           <Box>

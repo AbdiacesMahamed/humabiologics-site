@@ -35,11 +35,7 @@ export default {
         maxLength: 96,
       },
     },
-    {
-      name: "brand",
-      title: "Brand",
-      type: "string",
-    },
+
     {
       name: "category",
       title: "Category",
