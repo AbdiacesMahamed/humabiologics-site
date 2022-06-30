@@ -8,7 +8,9 @@ import {
   Link,
   List,
   ListItem,
+  MenuItem,
   Select,
+  TableCell,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
@@ -28,6 +30,9 @@ export default function ProductScreen(props) {
   const { slug } = props;
   const {
     state: { cart },
+    state: {
+      cart: { cartItems },
+    },
     dispatch,
   } = useContext(Store);
   const { enqueueSnackbar } = useSnackbar();
@@ -52,7 +57,28 @@ export default function ProductScreen(props) {
     };
     fetchData();
   }, []);
-
+  const updateCartHandler = async (item, quantity) => {
+    const { data } = await axios.get(`/api/products/${item._id}`);
+    if (data.countInStock < quantity) {
+      enqueueSnackbar("Sorry. Product is out of stock", { variant: "error" });
+      return;
+    }
+    dispatch({
+      type: "CART_ADD_ITEM",
+      payload: {
+        _key: item._key,
+        name: item.name,
+        countInStock: item.countInStock,
+        slug: item.slug,
+        price: item.price,
+        image: item.image,
+        quantity,
+      },
+    });
+    enqueueSnackbar(`${item.name} updated in the cart`, {
+      variant: "success",
+    });
+  };
   const addToCartHandler = async () => {
     const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
@@ -113,11 +139,27 @@ export default function ProductScreen(props) {
                 <ListItem>Category: {product.category}</ListItem>
                 <ListItem>Brand: {product.brand}</ListItem>
                 <ListItem>
-                  <Select></Select>
+                  {cartItems.map((item) => (
+                    <TableCell align="right">
+                      <Select
+                        value={item.quantity}
+                        onChange={(e) =>
+                          updateCartHandler(item, e.target.value)
+                        }
+                      >
+                        {[...Array(item.countInStock).keys()].map((x) => (
+                          <MenuItem key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </TableCell>
+                  ))}
                 </ListItem>
                 <ListItem>
                   <Typography>Description: {product.description}</Typography>
                 </ListItem>
+                <ListItem></ListItem>
               </List>
             </Grid>
             <Grid item md={3} xs={12}>
