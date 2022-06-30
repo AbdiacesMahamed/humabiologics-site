@@ -195,20 +195,6 @@ export default function SearchScreen() {
                 </Select>
               </Box>
             </ListItem>
-            <ListItem>
-              <Box sx={classes.fullWidth}>
-                <Typography>Ratings</Typography>
-                <Select value={rating} onChange={ratingHandler} fullWidth>
-                  <MenuItem value="all">All</MenuItem>
-                  {ratings.map((rating) => (
-                    <MenuItem dispaly="flex" key={rating} value={rating}>
-                      <Rating value={rating} readOnly />
-                      <Typography component="span">&amp; Up</Typography>
-                    </MenuItem>
-                  ))}
-                </Select>
-              </Box>
-            </ListItem>
           </List>
         </Grid>
         <Grid item md={9}>
@@ -234,7 +220,6 @@ export default function SearchScreen() {
                 <MenuItem value="default">Default</MenuItem>
                 <MenuItem value="lowest">Price: Low to High</MenuItem>
                 <MenuItem value="highest">Price: High to Low</MenuItem>
-                <MenuItem value="toprated">Customer Reviews</MenuItem>
               </Select>
             </Grid>
           </Grid>

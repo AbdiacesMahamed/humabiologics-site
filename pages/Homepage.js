@@ -1,14 +1,10 @@
 import Image from "next/image";
 import styles from "./Homepage.module.css";
 import Appbar from "./components/appBar";
+
 function HomePage() {
   return (
     <div className={styles.body}>
-      {/* <Header></Header>
-      <div className={styles.line1}></div>
-      <div className={styles.top}>
-        <Navbar></Navbar>
-      </div> */}
       <Appbar></Appbar>
 
       <div className={styles.section1}>

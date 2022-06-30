@@ -9,10 +9,9 @@
 }
 
 .logo {
-  height: 20vh;
-  width: 20vw;
   position: relative;
-  left: 10vw;
+  left: 30vw;
+  top: 10vh;
   cursor: pointer;
 }
 

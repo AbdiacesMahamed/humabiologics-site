@@ -1,10 +1,8 @@
 import { createTheme } from "@mui/material/styles";
 import {
   AppBar,
-  Badge,
   Box,
   Button,
-  Container,
   CssBaseline,
   Divider,
   Drawer,
@@ -16,7 +14,6 @@ import {
   ListItemText,
   Menu,
   MenuItem,
-  Switch,
   ThemeProvider,
   Toolbar,
   Typography,
@@ -35,11 +32,14 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { useSnackbar } from "notistack";
 import { getError } from "../../utils/error";
+import styles from "./appBar.module.css";
+import Image from "next/image";
 
 export default function appBar({ title, description, children }) {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
+  const [query, setQuery] = useState("");
   const queryChangeHandler = (e) => {
     setQuery(e.target.value);
   };
@@ -130,7 +130,7 @@ export default function appBar({ title, description, children }) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <AppBar position="static" sx={classes.appbar}>
+        <AppBar position="static" sx={classes.appbar} className={styles.appbar}>
           <Toolbar sx={classes.toolbar}>
             <Box display="flex" alignItems="center">
               <IconButton
@@ -142,9 +142,7 @@ export default function appBar({ title, description, children }) {
                 <MenuIcon sx={classes.navbarButton} />
               </IconButton>
               <NextLink href="/Homepage" passHref>
-                <Link>
-                  <Typography sx={classes.brand}>Humabiologics</Typography>
-                </Link>
+                <Image height={50} width={220} src="/logo.png"></Image>
               </NextLink>
             </Box>
             <Drawer
@@ -186,7 +184,11 @@ export default function appBar({ title, description, children }) {
                 ))}
               </List>
             </Drawer>
-            <Box sx={isDesktop ? classes.visible : classes.hidden}>
+
+            <Box
+              sx={isDesktop ? classes.visible : classes.hidden}
+              className={styles.right}
+            >
               <form onSubmit={submitHandler}>
                 <Box sx={classes.searchForm}>
                   <InputBase
