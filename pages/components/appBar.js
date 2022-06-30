@@ -39,7 +39,7 @@ export default function appBar({ title, description, children }) {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
-
+  const [query, setQuery] = useState("");
   const queryChangeHandler = (e) => {
     setQuery(e.target.value);
   };
