@@ -79,31 +79,31 @@ export default function ProductScreen(props) {
       variant: "success",
     });
   };
-  const addToCartHandler = async () => {
-    const existItem = cart.cartItems.find((x) => x._id === product._id);
-    const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/products/${product._id}`);
-    if (data.countInStock < quantity) {
-      enqueueSnackbar("Sorry. Product is out of stock", { variant: "error" });
-      return;
-    }
-    dispatch({
-      type: "CART_ADD_ITEM",
-      payload: {
-        _key: product._id,
-        name: product.name,
-        countInStock: product.countInStock,
-        slug: product.slug.current,
-        price: product.price,
-        image: urlForThumbnail(product.image),
-        quantity,
-      },
-    });
-    enqueueSnackbar(`${product.name} added to the cart`, {
-      variant: "success",
-    });
-    router.push("/cart");
-  };
+  // const addToCartHandler = async () => {
+  //   const existItem = cart.cartItems.find((x) => x._id === product._id);
+  //   const quantity = existItem ? existItem.quantity + 1 : 1;
+  //   const { data } = await axios.get(`/api/products/${product._id}`);
+  //   if (data.countInStock < quantity) {
+  //     enqueueSnackbar("Sorry. Product is out of stock", { variant: "error" });
+  //     return;
+  //   }
+  //   dispatch({
+  //     type: "CART_ADD_ITEM",
+  //     payload: {
+  //       _key: product._id,
+  //       name: product.name,
+  //       countInStock: product.countInStock,
+  //       slug: product.slug.current,
+  //       price: product.price,
+  //       image: urlForThumbnail(product.image),
+  //       quantity,
+  //     },
+  //   });
+  //   enqueueSnackbar(`${product.name} added to the cart`, {
+  //     variant: "success",
+  //   });
+  //   router.push("/cart");
+  // };
   return (
     <Layout title={product?.title}>
       {loading ? (
@@ -137,7 +137,7 @@ export default function ProductScreen(props) {
                   </Typography>
                 </ListItem>
                 <ListItem>Category: {product.category}</ListItem>
-                <ListItem>Brand: {product.brand}</ListItem>
+
                 <ListItem>
                   {cartItems.map((item) => (
                     <TableCell align="right">
@@ -190,13 +190,15 @@ export default function ProductScreen(props) {
                     </Grid>
                   </ListItem>
                   <ListItem>
-                    <Button
-                      onClick={addToCartHandler}
-                      fullWidth
-                      variant="contained"
-                    >
-                      Add to cart
-                    </Button>
+                    <NextLink href="/cart" passHref>
+                      <Button
+                        // onClick={addToCartHandler}
+                        fullWidth
+                        variant="contained"
+                      >
+                        Add to cart
+                      </Button>
+                    </NextLink>
                   </ListItem>
                 </List>
               </Card>
