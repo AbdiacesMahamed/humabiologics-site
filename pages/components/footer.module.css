@@ -1,0 +1,37 @@
+.body {
+  height: 50vh;
+  width: 100vw;
+  position: relative;
+}
+
+.topLine {
+  height: 1vh;
+  width: 95vw;
+  position: relative;
+  right: 30vw;
+  background-color: blue;
+}
+
+.imageContainer {
+  position: absolute;
+  top: 19vh;
+  left: 10vh;
+  background-color: blueviolet;
+  width: 20vw;
+}
+
+.infoContainer {
+  list-style: none;
+  position: absolute;
+  right: 35vw;
+  top: 5vh;
+  font-size: 26px;
+}
+
+.infoContainer2 {
+  list-style: none;
+  position: absolute;
+  right: 5vw;
+  top: 5vh;
+  font-size: 26px;
+}

@@ -11,6 +11,7 @@ import {
   MenuItem,
   Select,
   TableCell,
+  TableRow,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
@@ -29,34 +30,12 @@ export default function ProductScreen(props) {
   const router = useRouter();
   const { slug } = props;
   const {
-    state: { cart },
     state: {
       cart: { cartItems },
     },
+    state: { cart },
     dispatch,
   } = useContext(Store);
-  const { enqueueSnackbar } = useSnackbar();
-  const [state, setState] = useState({
-    product: null,
-    loading: true,
-    error: "",
-  });
-  const { product, loading, error } = state;
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const product = await client.fetch(
-          `
-            *[_type == "product" && slug.current == $slug][0]`,
-          { slug }
-        );
-        setState({ ...state, product, loading: false });
-      } catch (err) {
-        setState({ ...state, error: err.message, loading: false });
-      }
-    };
-    fetchData();
-  }, []);
   const updateCartHandler = async (item, quantity) => {
     const { data } = await axios.get(`/api/products/${item._id}`);
     if (data.countInStock < quantity) {
@@ -79,31 +58,54 @@ export default function ProductScreen(props) {
       variant: "success",
     });
   };
-  // const addToCartHandler = async () => {
-  //   const existItem = cart.cartItems.find((x) => x._id === product._id);
-  //   const quantity = existItem ? existItem.quantity + 1 : 1;
-  //   const { data } = await axios.get(`/api/products/${product._id}`);
-  //   if (data.countInStock < quantity) {
-  //     enqueueSnackbar("Sorry. Product is out of stock", { variant: "error" });
-  //     return;
-  //   }
-  //   dispatch({
-  //     type: "CART_ADD_ITEM",
-  //     payload: {
-  //       _key: product._id,
-  //       name: product.name,
-  //       countInStock: product.countInStock,
-  //       slug: product.slug.current,
-  //       price: product.price,
-  //       image: urlForThumbnail(product.image),
-  //       quantity,
-  //     },
-  //   });
-  //   enqueueSnackbar(`${product.name} added to the cart`, {
-  //     variant: "success",
-  //   });
-  //   router.push("/cart");
-  // };
+  const { enqueueSnackbar } = useSnackbar();
+  const [state, setState] = useState({
+    product: null,
+    loading: true,
+    error: "",
+  });
+  const { product, loading, error } = state;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const product = await client.fetch(
+          `
+            *[_type == "product" && slug.current == $slug][0]`,
+          { slug }
+        );
+        setState({ ...state, product, loading: false });
+      } catch (err) {
+        setState({ ...state, error: err.message, loading: false });
+      }
+    };
+    fetchData();
+  }, []);
+
+  const addToCartHandler = async () => {
+    const existItem = cart.cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+    const { data } = await axios.get(`/api/products/${product._id}`);
+    if (data.countInStock < quantity) {
+      enqueueSnackbar("Sorry. Product is out of stock", { variant: "error" });
+      return;
+    }
+    dispatch({
+      type: "CART_ADD_ITEM",
+      payload: {
+        _key: product._id,
+        name: product.name,
+        countInStock: product.countInStock,
+        slug: product.slug.current,
+        price: product.price,
+        image: urlForThumbnail(product.image),
+        quantity,
+      },
+    });
+    enqueueSnackbar(`${product.name} added to the cart`, {
+      variant: "success",
+    });
+    router.push("/cart");
+  };
   return (
     <Layout title={product?.title}>
       {loading ? (
@@ -137,29 +139,30 @@ export default function ProductScreen(props) {
                   </Typography>
                 </ListItem>
                 <ListItem>Category: {product.category}</ListItem>
-
+                <ListItem>Brand: {product.brand}</ListItem>
                 <ListItem>
-                  {cartItems.map((item) => (
-                    <TableCell align="right">
-                      <Select
-                        value={item.quantity}
-                        onChange={(e) =>
-                          updateCartHandler(item, e.target.value)
-                        }
-                      >
-                        {[...Array(item.countInStock).keys()].map((x) => (
-                          <MenuItem key={x + 1} value={x + 1}>
-                            {x + 1}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </TableCell>
-                  ))}
+                  {/* {cartItems.map((item) => (
+                    <TableRow key={item._key}>
+                      <TableCell align="right">
+                        <Select
+                          value={item.quantity}
+                          onChange={(e) =>
+                            updateCartHandler(item, e.target.value)
+                          }
+                        >
+                          {[...Array(item.countInStock).keys()].map((x) => (
+                            <MenuItem key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </TableCell>
+                    </TableRow>
+                  ))} */}
                 </ListItem>
                 <ListItem>
                   <Typography>Description: {product.description}</Typography>
                 </ListItem>
-                <ListItem></ListItem>
               </List>
             </Grid>
             <Grid item md={3} xs={12}>
@@ -190,15 +193,13 @@ export default function ProductScreen(props) {
                     </Grid>
                   </ListItem>
                   <ListItem>
-                    <NextLink href="/cart" passHref>
-                      <Button
-                        // onClick={addToCartHandler}
-                        fullWidth
-                        variant="contained"
-                      >
-                        Add to cart
-                      </Button>
-                    </NextLink>
+                    <Button
+                      onClick={addToCartHandler}
+                      fullWidth
+                      variant="contained"
+                    >
+                      Add to cart
+                    </Button>
                   </ListItem>
                 </List>
               </Card>

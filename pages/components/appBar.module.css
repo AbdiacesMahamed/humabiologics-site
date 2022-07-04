@@ -1,4 +1,62 @@
 .right {
   position: relative;
-  left: 25vw;
+  left: 0vw;
+}
+.navLinks {
+  position: relative;
+  top: 2vh;
+  list-style: none;
+  display: flex;
+  background-color: red;
+  justify-content: space-around;
+  width: 50vw;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: Arial;
+  font-weight: 600;
+}
+
+.dropDown {
+  background-color: blue;
+  margin: 0%;
+  width: 100vw;
+  position: relative;
+  display: none;
+  transform: translateY(-100%);
+}
+.dropDownActive {
+  background-color: blue;
+  margin: 0%;
+  width: 100vw;
+  position: relative;
+  transform: translateY(0%);
+}
+
+.dropDownText1 {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: blueviolet;
+  height: 30vh;
+  width: 20vw;
+  margin: 0%;
+}
+
+.dropDownText2 {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: red;
+  height: 30vh;
+  width: 20vw;
+  margin: 0%;
+  position: absolute;
+  left: 30vw;
+  top: 0px;
+}
+
+.links {
+  cursor: pointer;
 }

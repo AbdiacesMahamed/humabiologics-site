@@ -183,3 +183,10 @@
     font-size: 20px;
   }
 }
+
+.section5 {
+  background-color: white;
+
+  width: 100vw;
+  position: relative;
+}

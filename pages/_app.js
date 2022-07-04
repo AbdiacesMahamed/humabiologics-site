@@ -1,9 +1,9 @@
-import "../styles/globals.css";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import { StoreProvider } from "../utils/Store";
 import { SnackbarProvider } from "notistack";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const clientSideEmotionCache = createCache({ key: "css" });
 

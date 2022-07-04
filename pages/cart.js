@@ -85,7 +85,7 @@ function CartScreen() {
                   <TableRow>
                     <TableCell>Image</TableCell>
                     <TableCell>Name</TableCell>
-                    <TableCell align="right">Qauntity</TableCell>
+                    <TableCell align="right">Quantity</TableCell>
                     <TableCell align="right">Price</TableCell>
                     <TableCell align="right">Action</TableCell>
                   </TableRow>
@@ -105,6 +105,7 @@ function CartScreen() {
                           </Link>
                         </NextLink>
                       </TableCell>
+
                       <TableCell>
                         <NextLink href={`/product/${item.slug}`} passHref>
                           <Link>

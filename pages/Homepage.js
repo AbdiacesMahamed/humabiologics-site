@@ -1,6 +1,8 @@
 import Image from "next/image";
 import styles from "./Homepage.module.css";
 import Appbar from "./components/appBar";
+import Slider from "./components/slider";
+import Footer from "./components/footer";
 
 function HomePage() {
   return (
@@ -92,6 +94,10 @@ function HomePage() {
           <Image width={1700} height={500} src="/partners.png"></Image>
         </div>
       </div>
+      <div className={styles.section5}>
+        <Slider></Slider>
+      </div>
+      <Footer></Footer>
     </div>
   );
 }
