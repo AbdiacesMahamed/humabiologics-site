@@ -7,7 +7,7 @@
   top: 2vh;
   list-style: none;
   display: flex;
-  background-color: red;
+
   justify-content: space-around;
   width: 50vw;
   cursor: pointer;
@@ -17,19 +17,19 @@
 }
 
 .dropDown {
-  background-color: blue;
   margin: 0%;
   width: 100vw;
   position: relative;
   display: none;
   transform: translateY(-100%);
+  background-color: #c8c8c8;
 }
 .dropDownActive {
-  background-color: blue;
   margin: 0%;
   width: 100vw;
   position: relative;
   transform: translateY(0%);
+  background-color: #c8c8c8;
 }
 
 .dropDownText1 {
@@ -37,7 +37,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: blueviolet;
+
   height: 30vh;
   width: 20vw;
   margin: 0%;
@@ -48,7 +48,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: red;
+
   height: 30vh;
   width: 20vw;
   margin: 0%;

@@ -7,16 +7,23 @@ function footer() {
     <div className={styles.body}>
       <div className={styles.topLine}></div>
       <div className={styles.imageContainer}>
-        <Image src="/HumabiologicsLogo.png" height={170} width={300}></Image>
+        <div className={styles.pill}>SUBSCRIBE</div>
+        <Image src="/HumabiologicsLogo.png" height={200} width={400}></Image>
       </div>
 
       <ul className={styles.infoContainer}>
-        <span>Navigation</span>
-        <li>About Us</li>
+        <span className={styles.head}>Navigation</span>
+        <div className={styles.line}></div>
 
-        <li>HUMAN BIOMATERIALS</li>
-
-        <li>APPLICATIONS</li>
+        <NextLink href="/Company" passHref>
+          <li className={styles.link}>About Us</li>
+        </NextLink>
+        <NextLink href="/HumanBiomaterials" passHref>
+          <li className={styles.link}>HUMAN BIOMATERIALS</li>
+        </NextLink>
+        <NextLink href="/index" passHref>
+          <li className={styles.link}>APPLICATIONS</li>
+        </NextLink>
 
         <li>IFU</li>
 
@@ -26,7 +33,8 @@ function footer() {
       </ul>
 
       <ul className={styles.infoContainer2}>
-        <li>Contact Us</li>
+        <li className={styles.head}>Contact Us</li>
+        <div className={styles.line}></div>
         <li>HUMABIOLOGICS, INC.</li>
         <li>275 N GATEWAY DRIVE</li>
         <li>Phoenix, AZ 85034</li>

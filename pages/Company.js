@@ -9,7 +9,7 @@ function Company() {
     <div className={styles.body}>
       <Appbar></Appbar>
       <div className={styles.section1}>
-        <Image src="/company.png" height={1000} width={1570}></Image>
+        <Image src="/company.png" height={850} width={1500}></Image>
       </div>
     </div>
   );
