@@ -169,7 +169,12 @@ export default function appBar({ title, description, children }) {
                 <MenuIcon sx={classes.navbarButton} />
               </IconButton>
               <NextLink href="/Homepage" passHref>
-                <Image height={50} width={220} src="/logo.png"></Image>
+                <Image
+                  className={styles.logo}
+                  height={50}
+                  width={220}
+                  src="/logo.png"
+                ></Image>
               </NextLink>
               <ul className={styles.navLinks}>
                 <li onClick={dropDown2}>HUMAN BIOMATERIALS</li>
@@ -324,7 +329,7 @@ export default function appBar({ title, description, children }) {
           <NextLink href="./Distributor">
             <li className={styles.links}>DISTRIBUTORS</li>
           </NextLink>
-          <NextLink href="./HumanBiomaterials">
+          <NextLink href="./Quality">
             <li className={styles.links}>QUALITY AND REGULATORY</li>
           </NextLink>
         </ul>

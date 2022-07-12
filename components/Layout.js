@@ -35,6 +35,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { useSnackbar } from "notistack";
 import { getError } from "../utils/error";
+import styles from "./Layout.module.css";
 
 export default function Layout({ title, description, children }) {
   const router = useRouter();
@@ -126,6 +127,33 @@ export default function Layout({ title, description, children }) {
     e.preventDefault();
     router.push(`/search?query=${query}`);
   };
+  let [second, setsecond] = useState(styles.dropDown);
+  function dropDown2() {
+    if (second === styles.dropDown) {
+      setsecond(styles.dropDownActive);
+    }
+
+    if (second === styles.dropDownActive) {
+      setsecond(styles.dropDown);
+    }
+    if (third === styles.dropDownActive) {
+      setThird(styles.dropDown);
+    }
+  }
+
+  let [third, setThird] = useState(styles.dropDown);
+  function dropDown3() {
+    if (third === styles.dropDown) {
+      setThird(styles.dropDownActive);
+    }
+
+    if (third === styles.dropDownActive) {
+      setThird(styles.dropDown);
+    }
+    if (second === styles.dropDownActive) {
+      setsecond(styles.dropDown);
+    }
+  }
 
   return (
     <>
@@ -151,6 +179,12 @@ export default function Layout({ title, description, children }) {
                   <Typography sx={classes.brand}>Humabiologics</Typography>
                 </Link>
               </NextLink>
+              <ul className={styles.navLinks}>
+                <li onClick={dropDown2}>HUMAN BIOMATERIALS</li>
+
+                <li onClick={dropDown3}>COMPANY </li>
+                <li>NEWS</li>
+              </ul>
             </Box>
             <Drawer
               anchor="left"
@@ -212,10 +246,10 @@ export default function Layout({ title, description, children }) {
             </Box>
 
             <Box>
-              <Switch
+              {/* <Switch
                 checked={darkMode}
                 onChange={darkModeChangeHandler}
-              ></Switch>
+              ></Switch> */}
               <NextLink href="/cart" passHref>
                 <Link>
                   <Typography component="span">
@@ -272,6 +306,52 @@ export default function Layout({ title, description, children }) {
             </Box>
           </Toolbar>
         </AppBar>
+        <div className={second}>
+          <ul className={styles.dropDownText1}>
+            <NextLink href="./HumanBiomaterials">
+              <li className={styles.links}>HUMAN COLLAGEN</li>
+            </NextLink>
+            <NextLink href="./HumanBiomaterials">
+              <li className={styles.links}>HUMAN GELATIN</li>
+            </NextLink>
+            <NextLink href="./HumanBiomaterials">
+              <li className={styles.links}>HUMAN ECM</li>
+            </NextLink>
+            <NextLink href="./HumanBiomaterials">
+              <li className={styles.links}>HUMAN BIOINKS</li>
+            </NextLink>
+          </ul>
+          <ul className={styles.dropDownText2}>
+            <NextLink href="/">
+              <li className={styles.links}>STORE</li>
+            </NextLink>
+            <NextLink href="/">
+              <li className={styles.links}>CERTIFICATE OF ANALYSIS</li>
+            </NextLink>
+            <NextLink href="/">
+              <li className={styles.links}>FAQS</li>
+            </NextLink>
+            <NextLink href="/">
+              <li></li>
+            </NextLink>
+          </ul>
+        </div>
+        <div className={third}>
+          <ul className={styles.dropDownText1}>
+            <NextLink href="./Company">
+              <li className={styles.links}>ABOUT US</li>
+            </NextLink>
+            <NextLink href="./Leadership">
+              <li className={styles.links}>LEADERSHIP</li>
+            </NextLink>
+            <NextLink href="./Distributor">
+              <li className={styles.links}>DISTRIBUTORS</li>
+            </NextLink>
+            <NextLink href="./Quality">
+              <li className={styles.links}>QUALITY AND REGULATORY</li>
+            </NextLink>
+          </ul>
+        </div>
         <Container component="main" sx={classes.main}>
           {children}
         </Container>

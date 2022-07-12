@@ -27,7 +27,7 @@
 
 .seperation {
   margin: 10px;
-  width: 67vw;
+  width: 60vw;
   height: 27vh;
   background-color: white;
   position: relative;
@@ -35,16 +35,19 @@
 
 .headBox {
   background-color: white;
-  height: 8vh;
+  font-size: 26px;
+  color: #283e95;
+  font-weight: 700;
 }
 
 .textBox {
   background-color: white;
   height: 20vh;
-  font-size: 1em;
+  font-size: 20px;
+  color: #283e95;
 }
 
 .body {
-  height: 128vh;
+  height: 100vh;
   width: 100vw;
 }

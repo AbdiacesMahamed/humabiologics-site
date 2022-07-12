@@ -1,13 +1,11 @@
 import styles from "./HumanBiomaterials.module.css";
 import Image from "next/image";
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
+import Appbar from "./components/appBar";
 
 function biomaterials() {
   return (
     <div className={styles.body}>
-      <Header></Header>
-      <Navbar></Navbar>
+      <Appbar></Appbar>
       <div className={styles.imageContainer}>
         <Image
           className={styles.image}

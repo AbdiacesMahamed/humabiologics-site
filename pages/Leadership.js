@@ -1,18 +1,14 @@
 import styles from "./Leadership.module.css";
 import Image from "next/image";
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
+
+import Appbar from "./components/appBar";
 
 function Leadership() {
   return (
     <div className={styles.body}>
-      <Header></Header>
-      <div className={styles.line1}></div>
-      <div className={styles.top}>
-        <Navbar></Navbar>
-      </div>
+      <Appbar></Appbar>
       <div>
-        <Image src="/leadershipHead.png" height={500} width={1570}></Image>
+        <Image src="/leadershipHead.png" height={450} width={1570}></Image>
       </div>
 
       <div>

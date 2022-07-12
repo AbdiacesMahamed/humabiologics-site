@@ -139,7 +139,7 @@ export default function ProductScreen(props) {
                   </Typography>
                 </ListItem>
                 <ListItem>Category: {product.category}</ListItem>
-                <ListItem>Brand: {product.brand}</ListItem>
+
                 <ListItem>
                   {/* {cartItems.map((item) => (
                     <TableRow key={item._key}>

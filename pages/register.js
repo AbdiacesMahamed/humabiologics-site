@@ -24,11 +24,11 @@ export default function RegisterScreen() {
   const router = useRouter();
   const { redirect } = router.query;
 
-  useEffect(() => {
-    if (userInfo) {
-      router.push(redirect || "/");
-    }
-  }, [router, userInfo, redirect]);
+  // useEffect(() => {
+  //   if (userInfo) {
+  //     router.push(redirect || "/");
+  //   }
+  // }, [router, userInfo, redirect]);
 
   const {
     handleSubmit,

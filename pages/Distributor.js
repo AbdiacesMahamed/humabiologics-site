@@ -1,17 +1,11 @@
 import styles from "./Distributor.module.css";
 import Image from "next/image";
-import Navbar from "./components/Navbar";
-
-import Header from "./components/Header";
+import Appbar from "./components/appBar";
 
 function Distributor() {
   return (
     <div className={styles.body}>
-      <Header></Header>
-      <div className={styles.line1}></div>
-      <div className={styles.top}>
-        <Navbar></Navbar>
-      </div>
+      <Appbar></Appbar>
       <div>
         <Image src="/distributor.png" height={700} width={1570}></Image>
       </div>

@@ -24,7 +24,7 @@ export default function ShippingScreen() {
 
   useEffect(() => {
     if (!userInfo) {
-      return router.push("/login?redirect=/shipping");
+      router.push("/login?redirect=/shipping");
     }
 
     setValue("fullName", shippingAddress.fullName);
