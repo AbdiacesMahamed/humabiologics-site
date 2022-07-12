@@ -36,6 +36,7 @@ import axios from "axios";
 import { useSnackbar } from "notistack";
 import { getError } from "../utils/error";
 import styles from "./Layout.module.css";
+import Image from "next/image";
 
 export default function Layout({ title, description, children }) {
   const router = useRouter();
@@ -175,9 +176,12 @@ export default function Layout({ title, description, children }) {
                 <MenuIcon sx={classes.navbarButton} />
               </IconButton>
               <NextLink href="/Homepage" passHref>
-                <Link>
-                  <Typography sx={classes.brand}>Humabiologics</Typography>
-                </Link>
+                <Image
+                  className={styles.logo}
+                  src="/logo.png"
+                  height={50}
+                  width={220}
+                ></Image>
               </NextLink>
               <ul className={styles.navLinks}>
                 <li onClick={dropDown2}>HUMAN BIOMATERIALS</li>
