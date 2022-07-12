@@ -80,7 +80,7 @@ function OrderScreen({ params }) {
 
   useEffect(() => {
     if (!userInfo) {
-      return router.push("/login");
+      router.push("/login");
     }
     const fetchOrder = async () => {
       try {
