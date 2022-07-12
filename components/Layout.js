@@ -227,6 +227,37 @@ export default function Layout({ title, description, children }) {
                     </ListItem>
                   </NextLink>
                 ))}
+                <ListItem>
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="space-between"
+                  >
+                    <Typography>Shopping by application</Typography>
+                    <IconButton
+                      aria-label="close"
+                      onClick={sidebarCloseHandler}
+                    >
+                      <CancelIcon />
+                    </IconButton>
+                  </Box>
+                </ListItem>
+                <Divider light />
+                {categories.map((category) => (
+                  <NextLink
+                    key={category}
+                    href={`/search?category=${category}`}
+                    passHref
+                  >
+                    <ListItem
+                      button
+                      component="a"
+                      onClick={sidebarCloseHandler}
+                    >
+                      <ListItemText primary={category}></ListItemText>
+                    </ListItem>
+                  </NextLink>
+                ))}
               </List>
             </Drawer>
             <Box sx={isDesktop ? classes.visible : classes.hidden}>

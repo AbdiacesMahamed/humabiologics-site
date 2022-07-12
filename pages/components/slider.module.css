@@ -2,3 +2,7 @@
   height: 10vh !important;
   width: 100vw !important;
 }
+
+.body {
+  position: relative;
+}

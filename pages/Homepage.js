@@ -95,6 +95,10 @@ function HomePage() {
         </div>
       </div>
       <div className={styles.section5}>
+        <span className={styles.trusted}> Trusted by</span>
+        <span className={styles.trusted2}>Industry Leaders</span>
+        <div className={styles.sideLine5}></div>
+        <div className={styles.sideLine6}></div>
         <Slider></Slider>
       </div>
       <Footer></Footer>

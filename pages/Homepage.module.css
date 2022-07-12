@@ -47,6 +47,7 @@
   padding: 0%;
   margin: 0%;
   overflow: hidden;
+  height: 500vh;
 }
 
 .section2 {
@@ -146,7 +147,25 @@
   top: 30px;
   left: 0px;
 }
+.sideLine5 {
+  height: 1vh;
+  background-color: #283e95;
+  width: 20vw;
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  z-index: +1;
+}
 
+.sideLine6 {
+  height: 1vh;
+  background-color: #283e95;
+  width: 20vw;
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  z-index: +1;
+}
 .section4 {
   background-color: white;
   height: 110vh;
@@ -165,7 +184,7 @@
   left: 33vw;
   width: 35vw;
   background-color: white;
-  font-size: 32px;
+  font-size: 2.5em;
   display: flex;
   justify-content: center;
   color: #283e95;
@@ -189,4 +208,39 @@
 
   width: 100vw;
   position: relative;
+}
+.trusted {
+  position: absolute;
+  left: 30vw;
+  width: 45vw;
+  background-color: transparent;
+  font-size: 2.7em;
+  display: flex;
+  justify-content: center;
+  color: #283e95;
+  font-weight: 550;
+  font-family: Arial;
+  flex-direction: column;
+  z-index: +1;
+  display: inline-block;
+  position: absolute;
+
+  left: 44vw;
+}
+.trusted2 {
+  position: absolute;
+  left: 30vw;
+  width: 45vw;
+  background-color: transparent;
+  font-size: 2.7em;
+  display: flex;
+  justify-content: center;
+  color: #283e95;
+  font-weight: 550;
+  font-family: Arial;
+  flex-direction: column;
+  z-index: +1;
+  position: absolute;
+  top: 47px;
+  left: 40vw;
 }
