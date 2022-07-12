@@ -53,6 +53,10 @@ function PlaceOrderScreen() {
       router.push("/cart");
     }
   }, [cartItems, paymentMethod, router]);
+  const cartClear = () => {
+    dispatch({ type: "CART_CLEAR" });
+    jsCookie.remove("cartItems");
+  };
 
   const placeOrderHandler = async () => {
     try {
@@ -78,10 +82,11 @@ function PlaceOrderScreen() {
           },
         }
       );
-      dispatch({ type: "CART_CLEAR" });
-      jsCookie.remove("cartItems");
-      setLoading(false);
+
       router.push(`/order/${data}`);
+      // dispatch({ type: "CART_CLEAR" });
+      // jsCookie.remove("cartItems");
+      // setLoading(false);
     } catch (err) {
       setLoading(false);
       enqueueSnackbar(getError(err), { variant: "error" });

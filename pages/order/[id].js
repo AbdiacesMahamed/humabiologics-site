@@ -57,6 +57,10 @@ function OrderScreen({ params }) {
       error: "",
     }
   );
+  // const cartClear = () => {
+  //   dispatch({ type: "CART_CLEAR" });
+  //   jsCookie.remove("cartItems");
+  // };
 
   const {
     shippingAddress,
@@ -328,7 +332,14 @@ function OrderScreen({ params }) {
       )}
     </Layout>
   );
+  function cartClear() {
+    const { state, dispatch } = useContext(Store);
+    dispatch({ type: "CART_CLEAR" });
+    jsCookie.remove("cartItems");
+  }
+  cartClear();
 }
+
 export function getServerSideProps({ params }) {
   return { props: { params } };
 }
