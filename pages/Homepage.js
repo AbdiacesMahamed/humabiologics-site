@@ -31,18 +31,21 @@ function HomePage() {
             width={350}
             height={350}
             src="/human-collagen.png"
+            alt="collagen"
           ></Image>
           <Image
             className={styles.circle1}
             width={350}
             height={350}
             src="/Human-ecm.png"
+            alt="ecm"
           ></Image>
           <Image
             className={styles.circle3}
             width={350}
             height={340}
             src="/gelatin4.png"
+            alt="geletin"
           ></Image>
         </div>
       </div>
@@ -58,30 +61,35 @@ function HomePage() {
             width={200}
             height={170}
             src="/bioink.png"
+            alt="bioink"
           ></Image>
           <Image
             className={styles.circle}
             width={200}
             height={170}
             src="/tissu-engineering.png"
+            alt="tissue"
           ></Image>
           <Image
             className={styles.circle}
             width={200}
             height={170}
             src="/organelles.png"
+            alt="organelles"
           ></Image>
           <Image
             className={styles.circle}
             width={200}
             height={170}
             src="/culture.png"
+            alt="src"
           ></Image>
           <Image
             className={styles.circle}
             width={200}
             height={170}
             src="/3dbio.png"
+            alt="3d"
           ></Image>
         </div>
       </div>
@@ -92,7 +100,12 @@ function HomePage() {
           <div>Partners</div>
         </div>
         <div className={styles.partnerImage}>
-          <Image width={1700} height={500} src="/partners.png"></Image>
+          <Image
+            width={1700}
+            height={500}
+            src="/partners.png"
+            alt="partner"
+          ></Image>
         </div>
       </div>
       <div className={styles.section5}>

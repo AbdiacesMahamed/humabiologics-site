@@ -8,7 +8,12 @@ function footer() {
       <div className={styles.topLine}></div>
       <div className={styles.imageContainer}>
         <div className={styles.pill}>SUBSCRIBE</div>
-        <Image src="/HumabiologicsLogo.png" height={200} width={400}></Image>
+        <Image
+          src="/HumabiologicsLogo.png"
+          alt="logo"
+          height={200}
+          width={400}
+        ></Image>
       </div>
 
       <ul className={styles.infoContainer}>

@@ -174,6 +174,7 @@ export default function Navbar({ title, description }) {
                   height={50}
                   width={220}
                   src="/logo.png"
+                  alt="logo"
                 ></Image>
               </NextLink>
               <ul className={styles.navLinks}>

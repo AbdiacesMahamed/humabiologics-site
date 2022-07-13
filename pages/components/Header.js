@@ -37,7 +37,7 @@ function Header() {
       <section className={styles.container}>
         <div className={styles.logo}>
           <NextLink href="/Homepage">
-            <Image width={400} height={100} src="/logo.png"></Image>
+            <Image width={400} height={100} src="/logo.png" alt="logo"></Image>
           </NextLink>
         </div>
 

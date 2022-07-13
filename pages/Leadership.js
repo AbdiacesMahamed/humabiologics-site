@@ -8,11 +8,16 @@ function Leadership() {
     <div className={styles.body}>
       <Appbar></Appbar>
       <div>
-        <Image src="/leadershipHead.png" height={450} width={1570}></Image>
+        <Image
+          src="/leadershipHead.png"
+          alt="head"
+          height={450}
+          width={1570}
+        ></Image>
       </div>
 
       <div>
-        <Image src="/Leader.png" height={500} width={500}></Image>
+        <Image src="/Leader.png" alt="leader" height={500} width={500}></Image>
       </div>
       <div className={styles.textContainer}>
         <span className={styles.topText}>Mohammad Albanna, PHD</span>

@@ -189,6 +189,7 @@ export default function Layout({ title, description, children }) {
                   src="/logo.png"
                   height={50}
                   width={220}
+                  alt="logo"
                 ></Image>
               </NextLink>
               <ul className={styles.navLinks}>

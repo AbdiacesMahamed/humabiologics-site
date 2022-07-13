@@ -12,18 +12,21 @@ function biomaterials() {
           width={200}
           height={200}
           src="/human-collagen.png"
+          alt="collagen"
         ></Image>
         <Image
           className={styles.image}
           width={200}
           height={200}
           src="/Human-ecm.png"
+          alt="ecm"
         ></Image>
         <Image
           className={styles.image}
           width={200}
           height={200}
           src="/gelatin.png"
+          alt="gelatin"
         ></Image>
       </div>
       <div className={styles.textContainer}>
