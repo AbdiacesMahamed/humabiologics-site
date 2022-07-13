@@ -38,11 +38,7 @@ export default function ProductScreen(props) {
   const { product, loading, error } = state;
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    const { slug } = props;
-    const {
-      state: { cart },
-      dispatch,
-    } = useContext(Store);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const fetchData = async () => {
       try {
         const product = await client.fetch(
