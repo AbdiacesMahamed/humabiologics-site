@@ -6,7 +6,6 @@ import {
   List,
   ListItem,
   MenuItem,
-  Rating,
   Select,
   Typography,
 } from "@mui/material";
@@ -37,11 +36,10 @@ const prices = [
   },
 ];
 
-const ratings = [1, 2, 3, 4, 5];
-
 export default function SearchScreen() {
   const router = useRouter();
   const {
+    application = "all",
     category = "all",
     query = "all",
     price = "all",
@@ -51,11 +49,13 @@ export default function SearchScreen() {
   const [state, setState] = useState({
     categories: [],
     products: [],
+    applications: [],
     error: "",
     loading: true,
   });
 
   const { loading, products, error } = state;
+
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     const fetchCategories = async () => {
@@ -68,11 +68,26 @@ export default function SearchScreen() {
     };
     fetchCategories();
 
+    const [applications, setApplications] = useState([]);
+
+    const fetchApplications = async () => {
+      try {
+        const { data } = await axios.get(`/api/products/applications`);
+        setApplications(data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    fetchApplications();
+
     const fetchData = async () => {
       try {
         let gQuery = '*[_type == "product"';
         if (category !== "all") {
           gQuery += ` && category match "${category}" `;
+        }
+        if (category !== "all") {
+          gQuery += ` && application match "${application}" `;
         }
         if (query !== "all") {
           gQuery += ` && name match "${query}" `;
@@ -102,7 +117,7 @@ export default function SearchScreen() {
       }
     };
     fetchData();
-  }, [category, price, query, rating, sort]);
+  }, [category, price, query, rating, sort, application]);
 
   const filterSearch = ({ category, sort, searchQuery, price, rating }) => {
     const path = router.pathname;
@@ -112,6 +127,7 @@ export default function SearchScreen() {
     if (sort) query.sort = sort;
     if (price) query.price = price;
     if (rating) query.rating = rating;
+    if (application) query.application = application;
 
     router.push({
       pathname: path,
@@ -126,6 +142,9 @@ export default function SearchScreen() {
   };
   const priceHandler = (e) => {
     filterSearch({ price: e.target.value });
+  };
+  const applicationHandler = (e) => {
+    filterSearch({ application: e.target.value });
   };
 
   const {
@@ -181,6 +200,42 @@ export default function SearchScreen() {
             </ListItem>
             <ListItem>
               <Box sx={classes.fullWidth}>
+                <Typography>Applications</Typography>
+                <Select
+                  fullWidth
+                  value={application}
+                  onChange={applicationHandler}
+                >
+                  <MenuItem value="all">All</MenuItem>
+                  {applications &&
+                    applications.map((application) => (
+                      <MenuItem key={application} value={application}>
+                        {application}
+                      </MenuItem>
+                    ))}
+                </Select>
+              </Box>
+            </ListItem>
+            {/* <ListItem>
+              <Box sx={classes.fullWidth}>
+                <Typography>Categories</Typography>
+                <Select
+                  fullWidth
+                  value={application}
+                  onChange={applicationHandler}
+                >
+                  <MenuItem value="all">All</MenuItem>
+                  {applications &&
+                    applications.map((application) => (
+                      <MenuItem key={application} value={application}>
+                        {application}
+                      </MenuItem>
+                    ))}
+                </Select>
+              </Box>
+            </ListItem> */}
+            <ListItem>
+              <Box sx={classes.fullWidth}>
                 <Typography>Prices</Typography>
                 <Select value={price} onChange={priceHandler} fullWidth>
                   <MenuItem value="all">All</MenuItem>
@@ -201,10 +256,7 @@ export default function SearchScreen() {
               Results
               {query !== "all" && query !== "" && " : " + query}
               {price !== "all" && " : Price " + price}
-              {rating !== "all" && " : Rating " + rating + " & up"}
-              {(query !== "all" && query !== "") ||
-              rating !== "all" ||
-              price !== "all" ? (
+              {(query !== "all" && query !== "") || price !== "all" ? (
                 <Button onClick={() => router.push("/search")}>X</Button>
               ) : null}
             </Grid>

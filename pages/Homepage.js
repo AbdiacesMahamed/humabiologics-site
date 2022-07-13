@@ -3,6 +3,7 @@ import styles from "./Homepage.module.css";
 import Appbar from "./components/appBar";
 import Slider from "./components/slider";
 import Footer from "./components/footer";
+// https://humabiologics.sanity.studio/desk
 
 function HomePage() {
   return (
@@ -32,16 +33,16 @@ function HomePage() {
             src="/human-collagen.png"
           ></Image>
           <Image
-            className={styles.circle}
+            className={styles.circle1}
             width={350}
             height={350}
             src="/Human-ecm.png"
           ></Image>
           <Image
-            className={styles.circle}
+            className={styles.circle3}
             width={350}
-            height={350}
-            src="/gelatin.png"
+            height={340}
+            src="/gelatin4.png"
           ></Image>
         </div>
       </div>

@@ -8,10 +8,6 @@ import {
   Link,
   List,
   ListItem,
-  MenuItem,
-  Select,
-  TableCell,
-  TableRow,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
@@ -140,26 +136,7 @@ export default function ProductScreen(props) {
                 </ListItem>
                 <ListItem>Category: {product.category}</ListItem>
 
-                <ListItem>
-                  {/* {cartItems.map((item) => (
-                    <TableRow key={item._key}>
-                      <TableCell align="right">
-                        <Select
-                          value={item.quantity}
-                          onChange={(e) =>
-                            updateCartHandler(item, e.target.value)
-                          }
-                        >
-                          {[...Array(item.countInStock).keys()].map((x) => (
-                            <MenuItem key={x + 1} value={x + 1}>
-                              {x + 1}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </TableCell>
-                    </TableRow>
-                  ))} */}
-                </ListItem>
+                <ListItem></ListItem>
                 <ListItem>
                   <Typography>Description: {product.description}</Typography>
                 </ListItem>

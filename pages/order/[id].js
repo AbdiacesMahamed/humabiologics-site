@@ -332,12 +332,6 @@ function OrderScreen({ params }) {
       )}
     </Layout>
   );
-  function cartClear() {
-    const { state, dispatch } = useContext(Store);
-    dispatch({ type: "CART_CLEAR" });
-    jsCookie.remove("cartItems");
-  }
-  cartClear();
 }
 
 export function getServerSideProps({ params }) {

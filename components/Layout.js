@@ -16,7 +16,6 @@ import {
   ListItemText,
   Menu,
   MenuItem,
-  Switch,
   ThemeProvider,
   Toolbar,
   Typography,
@@ -42,9 +41,9 @@ export default function Layout({ title, description, children }) {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { darkMode, cart, userInfo } = state;
-  const queryChangeHandler = (e) => {
-    setQuery(e.target.value);
-  };
+  // const queryChangeHandler = (e) => {
+  //   setQuery(e.target.value);
+  // };
   const theme = createTheme({
     components: {
       MuiLink: {
@@ -75,11 +74,7 @@ export default function Layout({ title, description, children }) {
       },
     },
   });
-  const darkModeChangeHandler = () => {
-    dispatch({ type: darkMode ? "DARK_MODE_OFF" : "DARK_MODE_ON" });
-    const newDarkMode = !darkMode;
-    jsCookie.set("darkMode", newDarkMode ? "ON" : "OFF");
-  };
+
   const [anchorEl, setAnchorEl] = useState(null);
   const loginMenuCloseHandler = (e, redirect) => {
     setAnchorEl(null);
@@ -110,6 +105,7 @@ export default function Layout({ title, description, children }) {
 
   const { enqueueSnackbar } = useSnackbar();
   const [categories, setCategories] = useState([]);
+  // const [applications, setApplications] = useState([]);
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -121,6 +117,18 @@ export default function Layout({ title, description, children }) {
     };
     fetchCategories();
   }, [enqueueSnackbar]);
+
+  // useEffect(() => {
+  //   const fetchApplications = async () => {
+  //     try {
+  //       const { data } = await axios.get(`/api/products/applications`);
+  //       setApplications(data);
+  //     } catch (err) {
+  //       enqueueSnackbar(getError(err), { variant: "error" });
+  //     }
+  //   };
+  //   fetchApplications();
+  // }, [enqueueSnackbar]);
 
   const isDesktop = useMediaQuery("(min-width:600px)");
 
@@ -227,7 +235,7 @@ export default function Layout({ title, description, children }) {
                     </ListItem>
                   </NextLink>
                 ))}
-                <ListItem>
+                {/* <ListItem>
                   <Box
                     display="flex"
                     alignItems="center"
@@ -243,10 +251,10 @@ export default function Layout({ title, description, children }) {
                   </Box>
                 </ListItem>
                 <Divider light />
-                {categories.map((category) => (
+                {applications.map((application) => (
                   <NextLink
-                    key={category}
-                    href={`/search?category=${category}`}
+                    key={application}
+                    href={`/search?application=${application}`}
                     passHref
                   >
                     <ListItem
@@ -254,20 +262,19 @@ export default function Layout({ title, description, children }) {
                       component="a"
                       onClick={sidebarCloseHandler}
                     >
-                      <ListItemText primary={category}></ListItemText>
+                      <ListItemText primary={application}></ListItemText>
                     </ListItem>
                   </NextLink>
-                ))}
+                ))} */}
               </List>
             </Drawer>
             <Box sx={isDesktop ? classes.visible : classes.hidden}>
               <form onSubmit={submitHandler}>
                 <Box sx={classes.searchForm}>
                   <InputBase
-                    name="query"
                     sx={classes.searchInput}
                     placeholder="Search products"
-                    onChange={queryChangeHandler}
+                    // onChange={queryChangeHandler}
                   />
                   <IconButton
                     type="submit"

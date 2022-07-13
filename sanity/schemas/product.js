@@ -43,6 +43,12 @@ export default {
     },
 
     {
+      name: "application",
+      title: "Applications",
+      type: "string",
+    },
+
+    {
       name: "countInStock",
       title: "CountInStock",
       type: "number",

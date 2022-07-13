@@ -59,6 +59,8 @@
 
 .links {
   cursor: pointer;
+  font-weight: 500;
+  color: white;
 }
 
 .logo {

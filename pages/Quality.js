@@ -1,4 +1,3 @@
-import styles from "./Quality.module.css";
 import Appbar from "./components/appBar";
 import Image from "next/image";
 
