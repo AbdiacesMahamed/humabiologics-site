@@ -33,7 +33,7 @@ export default function ShippingScreen() {
     setValue("postalCode", shippingAddress.postalCode);
     setValue("country", shippingAddress.country);
   }, [router, setValue, shippingAddress, userInfo]);
-
+  // build
   const submitHandler = ({ fullName, address, city, postalCode, country }) => {
     dispatch({
       type: "SAVE_SHIPPING_ADDRESS",
