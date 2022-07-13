@@ -39,7 +39,6 @@ const prices = [
 export default function SearchScreen() {
   const router = useRouter();
   const {
-    application = "all",
     category = "all",
     query = "all",
     price = "all",
@@ -49,7 +48,7 @@ export default function SearchScreen() {
   const [state, setState] = useState({
     categories: [],
     products: [],
-    // applications: [],
+
     error: "",
     loading: true,
   });
@@ -68,27 +67,13 @@ export default function SearchScreen() {
     };
     fetchCategories();
 
-    // const [applications, setApplications] = useState([]);
-
-    // const fetchApplications = async () => {
-    //   try {
-    //     const { data } = await axios.get(`/api/products/applications`);
-    //     setApplications(data);
-    //   } catch (err) {
-    //     console.log(err.message);
-    //   }
-    // };
-    // fetchApplications();
-
     const fetchData = async () => {
       try {
         let gQuery = '*[_type == "product"';
         if (category !== "all") {
           gQuery += ` && category match "${category}" `;
         }
-        if (category !== "all") {
-          gQuery += ` && application match "${application}" `;
-        }
+
         if (query !== "all") {
           gQuery += ` && name match "${query}" `;
         }
@@ -117,7 +102,7 @@ export default function SearchScreen() {
       }
     };
     fetchData();
-  }, [category, price, query, rating, sort, application]);
+  }, [category, price, query, rating, sort]);
 
   const filterSearch = ({ category, sort, searchQuery, price, rating }) => {
     const path = router.pathname;
@@ -127,7 +112,6 @@ export default function SearchScreen() {
     if (sort) query.sort = sort;
     if (price) query.price = price;
     if (rating) query.rating = rating;
-    if (application) query.application = application;
 
     router.push({
       pathname: path,
