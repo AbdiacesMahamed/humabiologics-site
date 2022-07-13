@@ -80,9 +80,6 @@ function PlaceOrderScreen() {
       );
 
       router.push(`/order/${data}`);
-      // dispatch({ type: "CART_CLEAR" });
-      // jsCookie.remove("cartItems");
-      // setLoading(false);
     } catch (err) {
       setLoading(false);
       enqueueSnackbar(getError(err), { variant: "error" });
