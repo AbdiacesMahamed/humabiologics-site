@@ -53,10 +53,6 @@ function PlaceOrderScreen() {
       router.push("/cart");
     }
   }, [cartItems, paymentMethod, router]);
-  const cartClear = () => {
-    dispatch({ type: "CART_CLEAR" });
-    jsCookie.remove("cartItems");
-  };
 
   const placeOrderHandler = async () => {
     try {

@@ -26,34 +26,10 @@ export default function ProductScreen(props) {
   const router = useRouter();
   const { slug } = props;
   const {
-    state: {
-      cart: { cartItems },
-    },
     state: { cart },
     dispatch,
   } = useContext(Store);
-  const updateCartHandler = async (item, quantity) => {
-    const { data } = await axios.get(`/api/products/${item._id}`);
-    if (data.countInStock < quantity) {
-      enqueueSnackbar("Sorry. Product is out of stock", { variant: "error" });
-      return;
-    }
-    dispatch({
-      type: "CART_ADD_ITEM",
-      payload: {
-        _key: item._key,
-        name: item.name,
-        countInStock: item.countInStock,
-        slug: item.slug,
-        price: item.price,
-        image: item.image,
-        quantity,
-      },
-    });
-    enqueueSnackbar(`${item.name} updated in the cart`, {
-      variant: "success",
-    });
-  };
+
   const { enqueueSnackbar } = useSnackbar();
   const [state, setState] = useState({
     product: null,

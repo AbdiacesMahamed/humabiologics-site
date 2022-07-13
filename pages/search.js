@@ -49,7 +49,7 @@ export default function SearchScreen() {
   const [state, setState] = useState({
     categories: [],
     products: [],
-    applications: [],
+    // applications: [],
     error: "",
     loading: true,
   });
@@ -68,17 +68,17 @@ export default function SearchScreen() {
     };
     fetchCategories();
 
-    const [applications, setApplications] = useState([]);
+    // const [applications, setApplications] = useState([]);
 
-    const fetchApplications = async () => {
-      try {
-        const { data } = await axios.get(`/api/products/applications`);
-        setApplications(data);
-      } catch (err) {
-        console.log(err.message);
-      }
-    };
-    fetchApplications();
+    // const fetchApplications = async () => {
+    //   try {
+    //     const { data } = await axios.get(`/api/products/applications`);
+    //     setApplications(data);
+    //   } catch (err) {
+    //     console.log(err.message);
+    //   }
+    // };
+    // fetchApplications();
 
     const fetchData = async () => {
       try {
@@ -143,9 +143,9 @@ export default function SearchScreen() {
   const priceHandler = (e) => {
     filterSearch({ price: e.target.value });
   };
-  const applicationHandler = (e) => {
-    filterSearch({ application: e.target.value });
-  };
+  // const applicationHandler = (e) => {
+  //   filterSearch({ application: e.target.value });
+  // };
 
   const {
     state: { cart },
@@ -198,7 +198,7 @@ export default function SearchScreen() {
                 </Select>
               </Box>
             </ListItem>
-            <ListItem>
+            {/* <ListItem>
               <Box sx={classes.fullWidth}>
                 <Typography>Applications</Typography>
                 <Select
@@ -215,7 +215,7 @@ export default function SearchScreen() {
                     ))}
                 </Select>
               </Box>
-            </ListItem>
+            </ListItem> */}
             {/* <ListItem>
               <Box sx={classes.fullWidth}>
                 <Typography>Categories</Typography>

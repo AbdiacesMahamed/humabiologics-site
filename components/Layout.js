@@ -134,7 +134,7 @@ export default function Layout({ title, description, children }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    router.push(`/search?query=${query}`);
+    // router.push(`/search?query=${query}`);
   };
   let [second, setsecond] = useState(styles.dropDown);
   function dropDown2() {
