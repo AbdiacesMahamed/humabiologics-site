@@ -57,7 +57,7 @@ export default function ProductScreen(props) {
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    []
+    [slug, state]
   );
 
   const addToCartHandler = async () => {
