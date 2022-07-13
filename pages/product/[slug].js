@@ -46,10 +46,9 @@ export default function ProductScreen(props) {
 
           { slug }
         );
-
-        setState({ ...state, product, loading: false });
+        onchange(setState({ ...state, product, loading: false }));
       } catch (err) {
-        setState({ ...state, error: err.message, loading: false });
+        onchange(setState({ ...state, error: err.message, loading: false }));
       }
     };
     fetchData();
