@@ -37,24 +37,29 @@ export default function ProductScreen(props) {
   });
   const { product, loading, error } = state;
   // eslint-disable-next-line
-  useEffect(() => {
-    onChange(state);
-    const fetchData = async () => {
-      try {
-        const product = await client.fetch(
-          `
+  useEffect(
+    () => {
+      onChange(state);
+      const fetchData = async () => {
+        try {
+          const product = await client.fetch(
+            `
             *[_type == "product" && slug.current == $slug][0]`,
 
-          { slug }
-        );
+            { slug }
+          );
 
-        setState({ ...state, product, loading: false });
-      } catch (err) {
-        setState({ ...state, error: err.message, loading: false });
-      }
-    };
-    fetchData();
-  }, []);
+          setState({ ...state, product, loading: false });
+        } catch (err) {
+          setState({ ...state, error: err.message, loading: false });
+        }
+      };
+      fetchData();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    []
+  );
 
   const addToCartHandler = async () => {
     const existItem = cart.cartItems.find((x) => x._id === product._id);
