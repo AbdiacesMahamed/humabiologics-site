@@ -43,10 +43,13 @@ export default function ProductScreen(props) {
         const product = await client.fetch(
           `
             *[_type == "product" && slug.current == $slug][0]`,
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           { slug }
         );
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         setState({ ...state, product, loading: false });
       } catch (err) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         setState({ ...state, error: err.message, loading: false });
       }
     };
@@ -113,7 +116,6 @@ export default function ProductScreen(props) {
                 <ListItem>Category: {product.category}</ListItem>
                 <ListItem>Brand: {product.brand}</ListItem>
                 <ListItem>
-                  <Rating value={product.rating} readOnly></Rating>
                   <Typography sx={classes.smallText}>
                     ({product.numReviews} reviews)
                   </Typography>
