@@ -21,13 +21,14 @@ import NextLink from "next/link";
 import CheckoutWizard from "../components/CheckoutWizard";
 import Layout from "../components/Layout";
 import classes from "../utils/classes";
-// import { Store } from "../utils/Store";
+import { Store } from "../utils/Store";
 import { useSnackbar } from "notistack";
 import { getError } from "../utils/error";
 import axios from "axios";
 // import jsCookie from "js-cookie";
 import dynamic from "next/dynamic";
 // deploy error fix attemppt
+// next deploy attempt
 
 function PlaceOrderScreen() {
   const { enqueueSnackbar } = useSnackbar();
