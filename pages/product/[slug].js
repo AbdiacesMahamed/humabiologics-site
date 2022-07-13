@@ -36,21 +36,19 @@ export default function ProductScreen(props) {
     error: "",
   });
   const { product, loading, error } = state;
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const fetchData = async () => {
       try {
         const product = await client.fetch(
           `
             *[_type == "product" && slug.current == $slug][0]`,
-          // eslint-disable-next-line react-hooks/exhaustive-deps
+
           { slug }
         );
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+
         setState({ ...state, product, loading: false });
       } catch (err) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         setState({ ...state, error: err.message, loading: false });
       }
     };
