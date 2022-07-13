@@ -38,7 +38,7 @@ export default function ProductScreen(props) {
   const { product, loading, error } = state;
   // eslint-disable-next-line
   useEffect(() => {
-    onchange(state);
+    onChange(state);
     const fetchData = async () => {
       try {
         const product = await client.fetch(
