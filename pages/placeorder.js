@@ -33,7 +33,7 @@ function PlaceOrderScreen() {
   const { enqueueSnackbar } = useSnackbar();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  // const { state, dispatch } = useContext(Store);
+  const { state } = useContext(Store);
   const {
     userInfo,
     cart: { cartItems, shippingAddress, paymentMethod },
