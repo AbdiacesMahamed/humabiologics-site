@@ -25,14 +25,14 @@ import { Store } from "../utils/Store";
 import { useSnackbar } from "notistack";
 import { getError } from "../utils/error";
 import axios from "axios";
-import jsCookie from "js-cookie";
+// import jsCookie from "js-cookie";
 import dynamic from "next/dynamic";
 
 function PlaceOrderScreen() {
   const { enqueueSnackbar } = useSnackbar();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { state, dispatch } = useContext(Store);
+  // const { state, dispatch } = useContext(Store);
   const {
     userInfo,
     cart: { cartItems, shippingAddress, paymentMethod },

@@ -35,7 +35,7 @@ import { getError } from "../../utils/error";
 import styles from "./appBar.module.css";
 import Image from "next/image";
 
-export default function Navbar({ title, description, children }) {
+export default function Navbar({ title, description }) {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
