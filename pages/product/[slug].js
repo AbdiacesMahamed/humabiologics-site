@@ -29,7 +29,6 @@ export default function ProductScreen(props) {
     state: { cart },
     dispatch,
   } = useContext(Store);
-
   const { enqueueSnackbar } = useSnackbar();
   const [state, setState] = useState({
     product: null,
@@ -37,6 +36,7 @@ export default function ProductScreen(props) {
     error: "",
   });
   const { product, loading, error } = state;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -111,8 +111,13 @@ export default function ProductScreen(props) {
                   </Typography>
                 </ListItem>
                 <ListItem>Category: {product.category}</ListItem>
-
-                <ListItem></ListItem>
+                <ListItem>Brand: {product.brand}</ListItem>
+                <ListItem>
+                  <Rating value={product.rating} readOnly></Rating>
+                  <Typography sx={classes.smallText}>
+                    ({product.numReviews} reviews)
+                  </Typography>
+                </ListItem>
                 <ListItem>
                   <Typography>Description: {product.description}</Typography>
                 </ListItem>
