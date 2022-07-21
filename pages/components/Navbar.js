@@ -104,7 +104,7 @@ function Navbar() {
           <NextLink href="./HumanBiomaterials">
             <a>HUMAN COLLAGEN</a>
           </NextLink>
-          <NextLink href="/">
+          <NextLink href="./HumanGeletin">
             <a>HUMAN GELATIN</a>
           </NextLink>
           <NextLink href="./HumanECM">
@@ -146,7 +146,6 @@ function Navbar() {
           </NextLink>
         </ul>
       </div>
-      <div></div>
     </div>
   );
 }
