@@ -104,10 +104,10 @@ function Navbar() {
           <NextLink href="./HumanBiomaterials">
             <a>HUMAN COLLAGEN</a>
           </NextLink>
-          <NextLink href="./HumanBiomaterials">
+          <NextLink href="/">
             <a>HUMAN GELATIN</a>
           </NextLink>
-          <NextLink href="./HumanBiomaterials">
+          <NextLink href="./HumanECM">
             <a>HUMAN ECM</a>
           </NextLink>
           <NextLink href="./HumanBiomaterials">
@@ -118,13 +118,13 @@ function Navbar() {
           <NextLink href="/">
             <a>STORE</a>
           </NextLink>
-          <NextLink href="/">
+          <NextLink href="">
             <a>CERTIFICATE OF ANALYSIS</a>
           </NextLink>
           <NextLink href="/">
             <a>FAQS</a>
           </NextLink>
-          <NextLink href="/">
+          <NextLink href="/HumanBiomaterials">
             <a></a>
           </NextLink>
         </ul>
@@ -146,6 +146,7 @@ function Navbar() {
           </NextLink>
         </ul>
       </div>
+      <div></div>
     </div>
   );
 }

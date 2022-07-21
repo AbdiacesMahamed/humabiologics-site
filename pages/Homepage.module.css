@@ -52,10 +52,9 @@
 
 .section2 {
   height: 65vh;
-  background-color: white;
+  background-color: transparent;
   position: relative;
   top: 5vh;
-  z-index: -1;
 }
 
 .biomaterialsContainer {
@@ -116,13 +115,17 @@
   align-items: center;
   justify-content: space-around;
 }
-.circle1 {
-  position: absolute !important;
-  top: -23px !important;
+
+.circle:hover {
+  transform: scale(1.015) !important;
+  transition: 1s !important;
+  cursor: pointer;
 }
-.circle3 {
-  position: absolute !important;
-  top: -12px !important;
+
+.test {
+  cursor: pointer;
+
+  background-color: black;
 }
 
 .section3 {

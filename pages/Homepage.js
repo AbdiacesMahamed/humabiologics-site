@@ -3,6 +3,7 @@ import styles from "./Homepage.module.css";
 import Appbar from "./components/appBar";
 import Slider from "./components/slider";
 import Footer from "./components/footer";
+import NextLink from "next/link";
 // https://humabiologics.sanity.studio/desk
 
 function HomePage() {
@@ -26,27 +27,33 @@ function HomePage() {
         <div className={styles.sideLine2}></div>
 
         <div className={styles.imageBar}>
-          <Image
-            className={styles.circle}
-            width={350}
-            height={350}
-            src="/human-collagen.png"
-            alt="collagen"
-          ></Image>
-          <Image
-            className={styles.circle1}
-            width={350}
-            height={350}
-            src="/Human-ecm.png"
-            alt="ecm"
-          ></Image>
-          <Image
-            className={styles.circle3}
-            width={350}
-            height={340}
-            src="/gelatin4.png"
-            alt="geletin"
-          ></Image>
+          <NextLink href="/HumanBiomaterials" passhref>
+            <Image
+              className={styles.circle}
+              width={350}
+              height={350}
+              src="/human-collagen.png"
+              alt="collagen"
+            ></Image>
+          </NextLink>
+          <NextLink href="/HumanECM" passhref>
+            <Image
+              className={styles.circle}
+              width={350}
+              height={350}
+              src="/Human-ecm.png"
+              alt="ecm"
+            ></Image>
+          </NextLink>
+          <NextLink href="/HumanGelatin" passhref>
+            <Image
+              className={styles.circle}
+              width={350}
+              height={340}
+              src="/gelatin4.png"
+              alt="geletin"
+            ></Image>
+          </NextLink>
         </div>
       </div>
       <div className={styles.section3}>
