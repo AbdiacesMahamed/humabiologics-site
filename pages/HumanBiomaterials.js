@@ -1,6 +1,7 @@
 import styles from "./HumanBiomaterials.module.css";
 import Image from "next/image";
 import Appbar from "./components/appBar";
+import Footer from "./components/footer";
 
 function biomaterials() {
   return (
@@ -25,6 +26,7 @@ function biomaterials() {
           </div>
         </div>
       </div>
+      <Footer  className={styles.bottom}></Footer>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import styles from "./Leadership.module.css";
 import Image from "next/image";
-
+import Footer from "./components/footer";
 import Appbar from "./components/appBar";
 
 function Leadership() {
@@ -23,6 +23,7 @@ function Leadership() {
         <span className={styles.topText}>Mohammad Albanna, PHD</span>
         <span className={styles.bottomText}>Founder and CEO</span>
       </div>
+      <Footer className={styles.bottom}></Footer>
     </div>
   );
 }

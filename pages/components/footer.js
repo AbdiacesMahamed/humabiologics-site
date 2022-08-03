@@ -15,6 +15,7 @@ function footer() {
           width={400}
         ></Image>
       </div>
+      
 
       <ul className={styles.infoContainer}>
         <span className={styles.head}>Navigation</span>

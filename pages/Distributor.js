@@ -1,6 +1,7 @@
 import styles from "./Distributor.module.css";
 import Image from "next/image";
 import Appbar from "./components/appBar";
+import Footer from "./components/footer";
 
 function Distributor() {
   return (
@@ -20,6 +21,7 @@ function Distributor() {
       <div className={styles.asia}>
         <Image src="/asia.png" alt="asia" height={350} width={1570}></Image>
       </div>
+      <Footer className={styles.bottom}></Footer>
     </div>
   );
 }

@@ -39,21 +39,70 @@ const prices = [
 export default function SearchScreen() {
   const router = useRouter();
   const {
+    
     category = "all",
     query = "all",
     price = "all",
-    rating = "all",
+    
     sort = "default",
+    application = "all"
+    
+    
   } = router.query;
   const [state, setState] = useState({
     categories: [],
     products: [],
-
+    applications: [],
     error: "",
     loading: true,
   });
 
   const { loading, products, error } = state;
+
+  const [applications, setApplications] = useState([]);
+  useEffect(() => {
+    const fetchApplications = async () => {
+      try {
+        const { data } = await axios.get(`/api/products/applications`);
+        setApplications(data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    fetchApplications();
+
+    
+
+    const fetchAppData = async () => {
+      try {
+        let gQuery = '*[_type == "product"';
+        if (application !== "all") {
+          gQuery += ` && application match "${application}" `;
+        }
+        if (query !== "all") {
+          gQuery += ` && name match "${query}" `;
+        }
+        
+        
+        
+
+        let order = "";
+       
+
+        gQuery += `] ${order}`;
+        setState({ loading: true });
+
+        const products = await client.fetch(gQuery);
+        setState({ products, loading: false });
+      } catch (err) {
+        setState({ error: err.message, loading: false });
+      }
+   
+    
+    };
+    fetchAppData();
+  }, [application, query]);
+
 
   const [categories, setCategories] = useState([]);
   useEffect(() => {
@@ -64,8 +113,13 @@ export default function SearchScreen() {
       } catch (err) {
         console.log(err.message);
       }
+
+      
     };
     fetchCategories();
+
+
+    
 
     const fetchData = async () => {
       try {
@@ -73,6 +127,7 @@ export default function SearchScreen() {
         if (category !== "all") {
           gQuery += ` && category match "${category}" `;
         }
+        
 
         if (query !== "all") {
           gQuery += ` && name match "${query}" `;
@@ -82,14 +137,12 @@ export default function SearchScreen() {
           const maxPrice = Number(price.split("-")[1]);
           gQuery += ` && price >= ${minPrice} && price <= ${maxPrice}`;
         }
-        if (rating !== "all") {
-          gQuery += ` && rating >= ${Number(rating)} `;
-        }
+        
         let order = "";
         if (sort !== "default") {
           if (sort === "lowest") order = "| order(price asc)";
           if (sort === "highest") order = "| order(price desc)";
-          if (sort === "toprated") order = "| order(rating desc)";
+         
         }
 
         gQuery += `] ${order}`;
@@ -102,16 +155,17 @@ export default function SearchScreen() {
       }
     };
     fetchData();
-  }, [category, price, query, rating, sort]);
+  }, [category, price, query, sort]);
 
-  const filterSearch = ({ category, sort, searchQuery, price, rating }) => {
+  const filterSearch = ({ category, sort, searchQuery, price,application }) => {
     const path = router.pathname;
     const { query } = router;
     if (searchQuery) query.searchQuery = searchQuery;
+    if (application) query.application = application;
     if (category) query.category = category;
     if (sort) query.sort = sort;
     if (price) query.price = price;
-    if (rating) query.rating = rating;
+   
 
     router.push({
       pathname: path,
@@ -120,6 +174,9 @@ export default function SearchScreen() {
   };
   const categoryHandler = (e) => {
     filterSearch({ category: e.target.value });
+  };
+  const applicationHandler = (e) => {
+    filterSearch({ application: e.target.value });
   };
   const sortHandler = (e) => {
     filterSearch({ sort: e.target.value });
@@ -182,7 +239,7 @@ export default function SearchScreen() {
                 </Select>
               </Box>
             </ListItem>
-            {/* <ListItem>
+            <ListItem>
               <Box sx={classes.fullWidth}>
                 <Typography>Applications</Typography>
                 <Select
@@ -199,7 +256,7 @@ export default function SearchScreen() {
                     ))}
                 </Select>
               </Box>
-            </ListItem> */}
+            </ListItem>
             {/* <ListItem>
               <Box sx={classes.fullWidth}>
                 <Typography>Categories</Typography>

@@ -1,7 +1,7 @@
 import { Carousel } from "react-bootstrap";
 import Image from "next/image";
 import styles from "./slider.module.css";
-
+// hi
 function slider() {
   return (
     <Carousel className={styles.body}>

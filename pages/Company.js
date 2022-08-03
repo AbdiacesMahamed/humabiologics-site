@@ -1,5 +1,5 @@
 import styles from "./company.module.css";
-
+import Footer from "./components/footer";
 import Image from "next/image";
 import Appbar from "./components/appBar";
 
@@ -15,6 +15,7 @@ function Company() {
           width={1500}
         ></Image>
       </div>
+      <Footer className={styles.bottom} ></Footer>
     </div>
   );
 }

@@ -7,6 +7,9 @@
   background-color: white;
   height: 100vh;
   margin: 0%;
+  position: relative;
+  top: -220px;
+  z-index: -1;
 }
 
 .image {
@@ -16,7 +19,7 @@
 .textContainer {
   background-color: white;
   width: 69vw;
-  height: 100vh;
+  
   position: relative;
   top: -100vh;
   right: -30vw;
@@ -42,7 +45,7 @@
 
 .textBox {
   background-color: white;
-  height: 20vh;
+  height: 5vh;
   font-size: 20px;
   color: #283e95;
 }
@@ -50,4 +53,20 @@
 .body {
   height: 100vh;
   width: 100vw;
+}
+
+.totalContainer{
+  position: absolute;
+  top: 30px;
+ 
+}
+
+.imageAdjust{
+  position: absolute;
+  top: 30px;
+}
+
+.bottom{
+  position: relative;
+  top: 100vh;
 }

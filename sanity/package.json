@@ -29,8 +29,10 @@
   "devDependencies": {
     "eslint": "^8.19.0"
   },
+  
   "repository": {
     "type": "git",
     "url": "https://github.com/AbdiacesMahamed/humabiologics-site.git"
   }
+  
 }

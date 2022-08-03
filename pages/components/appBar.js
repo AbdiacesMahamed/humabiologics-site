@@ -114,6 +114,18 @@ export default function Navbar({ title, description }) {
     };
     fetchCategories();
   }, [enqueueSnackbar]);
+  const [applications, setApplications] = useState([]);
+  useEffect(() => {
+    const fetchApplications = async () => {
+      try {
+        const { data } = await axios.get(`/api/products/applications`);
+        setApplications(data);
+      } catch (err) {
+        enqueueSnackbar(getError(err), { variant: "error" });
+      }
+    };
+    fetchApplications();
+  }, [enqueueSnackbar]);
 
   const isDesktop = useMediaQuery("(min-width:600px)");
 
@@ -178,10 +190,13 @@ export default function Navbar({ title, description }) {
                 ></Image>
               </NextLink>
               <ul className={styles.navLinks}>
-                <li onClick={dropDown2}>HUMAN BIOMATERIALS</li>
+                <li onClick={dropDown2}  className={styles.name} >HUMAN BIOMATERIALS</li>
 
-                <li onClick={dropDown3}>COMPANY </li>
-                <li>NEWS</li>
+                <li onClick={dropDown3}className={styles.name} >COMPANY </li>
+                <NextLink href='/News'>
+                <li className={styles.name} >NEWS</li>
+                </NextLink>
+                
               </ul>
             </Box>
             <Drawer
@@ -221,6 +236,37 @@ export default function Navbar({ title, description }) {
                     </ListItem>
                   </NextLink>
                 ))}
+                <ListItem>
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="space-between"
+                  >
+                    <Typography>Shopping by application</Typography>
+                    <IconButton
+                      aria-label="close"
+                      onClick={sidebarCloseHandler}
+                    >
+                      <CancelIcon />
+                    </IconButton>
+                  </Box>
+                </ListItem>
+                <Divider light />
+                {applications.map((application) => (
+                  <NextLink
+                    key={application}
+                    href={`/search?application=${application}`}
+                    passHref
+                  >
+                    <ListItem
+                      button
+                      component="a"
+                      onClick={sidebarCloseHandler}
+                    >
+                      <ListItemText primary={application}></ListItemText>
+                    </ListItem>
+                  </NextLink>
+                ))}
               </List>
             </Drawer>
 
@@ -255,6 +301,7 @@ export default function Navbar({ title, description }) {
                     aria-haspopup="true"
                     sx={classes.navbarButton}
                     onClick={loginClickHandler}
+                    className={styles.name} 
                   >
                     {userInfo.name}
                   </Button>
@@ -282,7 +329,7 @@ export default function Navbar({ title, description }) {
                 </>
               ) : (
                 <NextLink href="/login" passHref>
-                  <Link>Login</Link>
+                  <Link className={styles.name} >Login</Link>
                 </NextLink>
               )}
             </Box>
@@ -294,10 +341,10 @@ export default function Navbar({ title, description }) {
           <NextLink href="./HumanBiomaterials">
             <li className={styles.links}>HUMAN COLLAGEN</li>
           </NextLink>
-          <NextLink href="./HumanBiomaterials">
+          <NextLink href="./HumanGelatin">
             <li className={styles.links}>HUMAN GELATIN</li>
           </NextLink>
-          <NextLink href="./HumanBiomaterials">
+          <NextLink href="./HumanECM">
             <li className={styles.links}>HUMAN ECM</li>
           </NextLink>
           <NextLink href="./HumanBiomaterials">

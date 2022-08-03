@@ -65,3 +65,7 @@
 .logo {
   cursor: pointer;
 }
+
+.name{
+  color:#283e95 !important;
+}

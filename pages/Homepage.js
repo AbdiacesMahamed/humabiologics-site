@@ -123,6 +123,7 @@ function HomePage() {
         <Slider></Slider>
       </div>
       <Footer></Footer>
+      <div></div>
     </div>
   );
 }

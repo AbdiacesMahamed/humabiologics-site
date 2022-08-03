@@ -105,7 +105,7 @@ export default function Layout({ title, description, children }) {
 
   const { enqueueSnackbar } = useSnackbar();
   const [categories, setCategories] = useState([]);
-  // const [applications, setApplications] = useState([]);
+ 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -117,18 +117,18 @@ export default function Layout({ title, description, children }) {
     };
     fetchCategories();
   }, [enqueueSnackbar]);
-
-  // useEffect(() => {
-  //   const fetchApplications = async () => {
-  //     try {
-  //       const { data } = await axios.get(`/api/products/applications`);
-  //       setApplications(data);
-  //     } catch (err) {
-  //       enqueueSnackbar(getError(err), { variant: "error" });
-  //     }
-  //   };
-  //   fetchApplications();
-  // }, [enqueueSnackbar]);
+ const [applications, setApplications] = useState([]);
+  useEffect(() => {
+    const fetchApplications = async () => {
+      try {
+        const { data } = await axios.get(`/api/products/applications`);
+        setApplications(data);
+      } catch (err) {
+        enqueueSnackbar(getError(err), { variant: "error" });
+      }
+    };
+    fetchApplications();
+  }, [enqueueSnackbar]);
 
   const isDesktop = useMediaQuery("(min-width:600px)");
 
@@ -193,10 +193,12 @@ export default function Layout({ title, description, children }) {
                 ></Image>
               </NextLink>
               <ul className={styles.navLinks}>
-                <li onClick={dropDown2}>HUMAN BIOMATERIALS</li>
+                <li onClick={dropDown2} className={styles.name} >HUMAN BIOMATERIALS</li>
 
-                <li onClick={dropDown3}>COMPANY </li>
-                <li>NEWS</li>
+                <li onClick={dropDown3} className={styles.name} >COMPANY </li>
+                <NextLink href='/News'>
+                <li className={styles.name}>NEWS</li>
+                </NextLink>
               </ul>
             </Box>
             <Drawer
@@ -226,6 +228,7 @@ export default function Layout({ title, description, children }) {
                     key={category}
                     href={`/search?category=${category}`}
                     passHref
+                    
                   >
                     <ListItem
                       button
@@ -236,7 +239,8 @@ export default function Layout({ title, description, children }) {
                     </ListItem>
                   </NextLink>
                 ))}
-                {/* <ListItem>
+                
+                <ListItem>
                   <Box
                     display="flex"
                     alignItems="center"
@@ -254,9 +258,12 @@ export default function Layout({ title, description, children }) {
                 <Divider light />
                 {applications.map((application) => (
                   <NextLink
+                  
                     key={application}
                     href={`/search?application=${application}`}
                     passHref
+                    
+                    
                   >
                     <ListItem
                       button
@@ -266,7 +273,7 @@ export default function Layout({ title, description, children }) {
                       <ListItemText primary={application}></ListItemText>
                     </ListItem>
                   </NextLink>
-                ))} */}
+                ))}
               </List>
             </Drawer>
             <Box sx={isDesktop ? classes.visible : classes.hidden}>
@@ -295,11 +302,12 @@ export default function Layout({ title, description, children }) {
               ></Switch> */}
               <NextLink href="/cart" passHref>
                 <Link>
-                  <Typography component="span">
+                  <Typography component="span" className={styles.name}>
                     {cart.cartItems.length > 0 ? (
                       <Badge
                         color="secondary"
                         badgeContent={cart.cartItems.length}
+                        
                       >
                         Cart
                       </Badge>
@@ -316,6 +324,7 @@ export default function Layout({ title, description, children }) {
                     aria-haspopup="true"
                     sx={classes.navbarButton}
                     onClick={loginClickHandler}
+                    className={styles.name}
                   >
                     {userInfo.name}
                   </Button>
@@ -343,7 +352,7 @@ export default function Layout({ title, description, children }) {
                 </>
               ) : (
                 <NextLink href="/login" passHref>
-                  <Link>Login</Link>
+                  <Link className={styles.name} >Login</Link>
                 </NextLink>
               )}
             </Box>

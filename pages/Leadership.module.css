@@ -35,3 +35,8 @@
 .bottomText {
   font-size: large;
 }
+
+.bottom{
+  position: absolute;
+  bottom: 0;
+}

@@ -13,3 +13,9 @@
   top: 27vh;
   left: 8vh;
 }
+
+.bottom{
+  position: absolute;
+  bottom: 0;
+}
+

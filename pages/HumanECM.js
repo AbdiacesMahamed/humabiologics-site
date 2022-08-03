@@ -1,6 +1,7 @@
 import styles from "./HumanECM.module.css";
 import Image from "next/image";
 import Appbar from "./components/appBar";
+import Footer from './components/footer'
 
 function HumanECM() {
   return (
@@ -53,6 +54,7 @@ function HumanECM() {
           </div>
         </div>
       </div>
+      <Footer  className={styles.bottom}></Footer>
     </div>
   );
 }

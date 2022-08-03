@@ -118,12 +118,8 @@ export default function ProductScreen(props) {
                   </Typography>
                 </ListItem>
                 <ListItem>Category: {product.category}</ListItem>
-                <ListItem>Brand: {product.brand}</ListItem>
-                <ListItem>
-                  <Typography sx={classes.smallText}>
-                    ({product.numReviews} reviews)
-                  </Typography>
-                </ListItem>
+                <ListItem>Application: {product.application}</ListItem>
+                
                 <ListItem>
                   <Typography>Description: {product.description}</Typography>
                 </ListItem>

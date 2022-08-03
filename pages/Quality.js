@@ -1,5 +1,6 @@
 import Appbar from "./components/appBar";
 import Image from "next/image";
+import Footer from "./components/footer";
 
 function Quality() {
   return (
@@ -12,6 +13,7 @@ function Quality() {
         height={700}
         width={1500}
       ></Image>
+<Footer></Footer>
     </div>
   );
 }
