@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 
 import Appbar from './components/appBar';
 import Footer from './components/footer'
+import Image from 'next/image'
 
 export default function Home({ posts }) {
   const router = useRouter();
@@ -44,7 +45,7 @@ export default function Home({ posts }) {
           {mappedPosts.length ? mappedPosts.map((p, index) => (
             <div onClick={() => router.push(`/post/${p.slug.current}`)} key={index} className={styles.post}>
               <h3>{p.title}</h3>
-              <img className={styles.mainImage} src={p.mainImage} />
+              <Image className={styles.mainImage} src={p.mainImage} />
             </div>
           )) : <>No Posts Yet</>}
         </div>

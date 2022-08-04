@@ -23,6 +23,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Tabs from '../components/Tabs'
 
+
 export default function ProductScreen(props) {
   const router = useRouter();
   const { slug } = props;
@@ -88,6 +89,8 @@ export default function ProductScreen(props) {
   };
   return (
     <Layout title={product?.title}>
+      
+      
       {loading ? (
         <CircularProgress />
       ) : error ? (

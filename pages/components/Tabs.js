@@ -2,19 +2,7 @@ import { useState } from "react";
 import styles from './Tabs.module.css'
 
 function Tabs() {
-  // let [One, setOne] = useState(styles.dropDown);
-  function dropDown2() {
-    if (One === styles.dropDown) {
-      setOne(styles.dropDownActive);
-    }
-
-    if (One === styles.dropDownActive) {
-      setOne(styles.dropDown);
-    }
-    if (third === styles.dropDownActive) {
-      setThird(styles.dropDown);
-    }
-  }
+  
 
   let [tabOne, setTabOne] = useState(styles.tabOneClosed);
   function tabOneToggle() {
@@ -44,9 +32,7 @@ function Tabs() {
       setTabTwo(styles.tabTwoClosed);
     }
     
-    // if (third === styles.tabOneActive) {
-    //   setThird(styles.tabOneClosed);
-    // }
+    
   }
 
   let [tabThree, setTabThree] = useState(styles.tabThreeClosed);
@@ -61,9 +47,7 @@ function Tabs() {
     if (tabThree === styles.tabThreeActive) {
       setTabThree(styles.tabThreeClosed);
     }
-    // if (third === styles.tabOneActive) {
-    //   setThird(styles.tabOneClosed);
-    // }
+    
   }
 
   let [tabFour, setTabFour] = useState(styles.tabFourClosed);
@@ -78,9 +62,7 @@ function Tabs() {
     if (tabThree === styles.tabThreeActive) {
       setTabThree(styles.tabThreeClosed);
     }
-    // if (third === styles.tabOneActive) {
-    //   setThird(styles.tabOneClosed);
-    // }
+    
   }
 
 
