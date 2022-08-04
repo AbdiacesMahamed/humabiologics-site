@@ -4,6 +4,7 @@
   "rules": {
     "import/no-anonymous-default-export": 0,
     "@next/next/no-img-element": "off"
+    // turn off img rule
   }
 }
 // tool off
