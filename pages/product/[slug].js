@@ -21,6 +21,7 @@ import { urlFor, urlForThumbnail } from "../../utils/image";
 import { Store } from "../../utils/Store";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Tabs from '../components/Tabs'
 
 export default function ProductScreen(props) {
   const router = useRouter();
@@ -124,6 +125,7 @@ export default function ProductScreen(props) {
                   <Typography>Description: {product.description}</Typography>
                 </ListItem>
               </List>
+              <Tabs></Tabs>
             </Grid>
             <Grid item md={3} xs={12}>
               <Card>

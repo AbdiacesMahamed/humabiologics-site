@@ -20,7 +20,7 @@ function HumanGelatin() {
       <div className={styles.textContainer}>
         <div  className={styles.totalContainer}>
         <div className={styles.seperation}>
-          <div className={styles.headBox}>Native Human Skin Collagen</div>
+          <div className={styles.headBox}>Human Gelatin</div>
           <div className={styles.textBox}>
             {`
             Gelatin has been used for generation of tissue-engineered scaffolds and can be combined with other human-derived biomaterials -such as Collagen Type I from human skin (HumaDerm offered by Humabiologics) – to make completely human-derived tissue engineered composites.

@@ -17,6 +17,7 @@
 
 .body {
   position: relative;
+  height: 200vh;
 }
 
 .right {
@@ -37,7 +38,6 @@
     top: 100vh;
   }
 }
-
 .bottom{
   position: absolute;
   bottom: 0;

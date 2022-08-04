@@ -20,9 +20,15 @@ function Distributor() {
       </div>
       <div className={styles.asia}>
         <Image src="/asia.png" alt="asia" height={350} width={1570}></Image>
+        
       </div>
-      <Footer className={styles.bottom}></Footer>
+      <div className={styles.bottom}>
+      <Footer></Footer>
+      </div>
+      
+      
     </div>
+   
   );
 }
 
