@@ -7,11 +7,12 @@ import { useRouter } from 'next/router';
 
 import Appbar from './components/appBar';
 import Footer from './components/footer'
-import Image from 'next/image'
+import Image from 'next/image';
 
 export default function Home({ posts }) {
   const router = useRouter();
   const [mappedPosts, setMappedPosts] = useState([]);
+  
 
   useEffect(() => {
     if (posts.length) {
@@ -19,8 +20,9 @@ export default function Home({ posts }) {
         projectId: 'wfnkzjb8',
         dataset: 'production',
       });
-
+      
       setMappedPosts(
+        
         posts.map(p => {
           return {
             ...p,
@@ -28,6 +30,7 @@ export default function Home({ posts }) {
           }
         })
       );
+      
     } else {
       setMappedPosts([]);
     }
@@ -45,7 +48,7 @@ export default function Home({ posts }) {
           {mappedPosts.length ? mappedPosts.map((p, index) => (
             <div onClick={() => router.push(`/post/${p.slug.current}`)} key={index} className={styles.post}>
               <h3>{p.title}</h3>
-              <Image className={styles.mainImage} src={p.mainImage} />
+              <img className={styles.mainImage} src={p.mainImage} />
             </div>
           )) : <>No Posts Yet</>}
         </div>
