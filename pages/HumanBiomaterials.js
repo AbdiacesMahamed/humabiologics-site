@@ -26,7 +26,7 @@ function biomaterials() {
           </div>
         </div>
       </div>
-      <div className={styles.bottom}>
+      <div >
       <Footer  ></Footer>
       </div>
       

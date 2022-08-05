@@ -58,22 +58,25 @@ export default function Home({ posts }) {
   );
 }
 
-// export const getServerSideProps = async pageContext => {
-//   const query = encodeURIComponent('*[ _type == "post" ]');
-//   const url = `https://wfnkzjb8.api.sanity.io/v1/data/query/production?query=${query}`;
-//   const result = await fetch(url).then(res => res.json());
+export const getServerSideProps = async pageContext => {
+  const query = encodeURIComponent('*[ _type == "post" ]');
+  const url = `https://wfnkzjb8.api.sanity.io/v1/data/query/production?query=${query}`;
+  const result = await fetch(url).then(res => res.json());
 
-//   if (!result.result || !result.result.length) {
-//     return {
-//       props: {
-//         posts: [],
-//       }
-//     }
-//   } else {
-//     return {
-//       props: {
-//         posts: result.result,
-//       }
-//     }
-//   }
-// };
+  if (!result.result || !result.result.length) {
+    return {
+      props: {
+        posts: [],
+      }
+    }
+  } else {
+    return {
+      props: {
+        posts: result.result,
+      }
+    }
+  }
+};
+
+
+

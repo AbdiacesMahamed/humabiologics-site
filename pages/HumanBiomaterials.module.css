@@ -4,11 +4,11 @@
   flex-direction: column;
   align-items: center;
   width: 30vw;
-  background-color: white;
-  height: 100vh;
+ position: relative;
+ top: 2vh;
+  
   margin: 0%;
-  position: absolute;
-  top: -100px;
+ 
   z-index: -1;
 }
 
@@ -17,12 +17,11 @@
 }
 
 .textContainer {
-  background-color: white;
+
   width: 69vw;
-  height: 100vh;
-  position: absolute;
-  top: -100px;
-  right: 5vw;
+  position: relative;
+  left: 30vw;
+  top: -27vh;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -56,7 +55,4 @@
   width: 100vw;
 }
 
-.bottom{
-  position: relative;
-  top: 200vh;
-}
+
