@@ -49,6 +49,34 @@ export default {
     },
 
     {
+      name: "header",
+      title: "Header",
+      type: "string",
+    },
+
+    {
+      name: "protocals",
+      title: "Protocals",
+      type: "blockContent",
+    },
+    {
+      name: "qualityTesting",
+      title: "Quality Testing",
+      type: "blockContent",
+    },
+
+    {
+      name: "materialsSafetyDataSheet",
+      title: "Materials Safety Data Sheet",
+      type: "blockContent",
+    },
+    {
+      name: "applicationNotes",
+      title: "Application Notes",
+      type: "blockContent",
+    },
+
+    {
       name: "countInStock",
       title: "CountInStock",
       type: "number",

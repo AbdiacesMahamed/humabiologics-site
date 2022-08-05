@@ -12,7 +12,7 @@ import shippingAddress from "./shippingAddress";
 import post from "./post";
 import blockContent from "./blockContent";
 import author from "./author";
-import category from "./category";
+
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({

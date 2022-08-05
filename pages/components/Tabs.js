@@ -1,5 +1,7 @@
 import { useState } from "react";
+import client from "../../utils/client";
 import styles from './Tabs.module.css'
+import { useEffect } from "react";
 
 function Tabs() {
   
@@ -66,6 +68,38 @@ function Tabs() {
   }
 
 
+ 
+  const [state, setState] = useState({
+    product: null,
+    loading: true,
+    error: "",
+  });
+  const { product, loading, error } = state;
+  // eslint-disable-next-line
+  useEffect(
+    () => {
+      const fetchData = async () => {
+        try {
+          const product = await client.fetch(
+            `
+            *[_type == "product" && slug.current == $slug][0]`,
+
+            
+          );
+
+          setState({ ...state, product, loading: false });
+        } catch (err) {
+          setState({ ...state, error: err.message, loading: false });
+        }
+      };
+      fetchData();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    [ state]
+  );
+
+
     return (
       <div className={styles.container}>
         <div className={styles.blocTabs}>
@@ -96,9 +130,7 @@ function Tabs() {
             <h2>Content 1</h2>
            
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-              praesentium incidunt quia aspernatur quasi quidem facilis quo nihil
-              vel voluptatum?
+              {product.protocals}
             </p>
           </div>
 
@@ -106,9 +138,7 @@ function Tabs() {
             <h2>Content 2</h2>
            
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-              praesentium incidunt quia aspernatur quasi quidem facilis quo nihil
-              vel voluptatum?
+              {product.qualityTesting}
             </p>
           </div>
 
@@ -117,9 +147,7 @@ function Tabs() {
             <h2>Content 3</h2>
            
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-              praesentium incidunt quia aspernatur quasi quidem facilis quo nihil
-              vel voluptatum?
+              {product.materialsSafetyDataSheet}
             </p>
           </div>
 
@@ -127,9 +155,7 @@ function Tabs() {
             <h2>Content 4</h2>
            
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-              praesentium incidunt quia aspernatur quasi quidem facilis quo nihil
-              vel voluptatum?
+              {product.applicationNotes}
             </p>
           </div>
   
