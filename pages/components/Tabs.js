@@ -69,35 +69,37 @@ function Tabs() {
 
 
  
-  const [state, setState] = useState({
-    product: null,
-    loading: true,
-    error: "",
-  });
-  const { product, loading, error } = state;
-  // eslint-disable-next-line
-  useEffect(
-    () => {
-      const fetchData = async () => {
-        try {
-          const product = await client.fetch(
-            `
-            *[_type == "product" && slug.current == $slug][0]`,
 
-            
-          );
+  
+  // const [state, setState] = useState({
+  //   product: null,
+  //   loading: true,
+  //   error: "",
+  // });
+  // const { product, loading, error } = state;
+  // // eslint-disable-next-line
+  // useEffect(
+  //   () => {
+  //     const fetchData = async () => {
+  //       try {
+  //         const product = await client.fetch(
+  //           `
+  //           *[_type == "product" && slug.current == $slug][0]`,
 
-          setState({ ...state, product, loading: false });
-        } catch (err) {
-          setState({ ...state, error: err.message, loading: false });
-        }
-      };
-      fetchData();
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  //           { slug }
+  //         );
 
-    [ state]
-  );
+  //         setState({ ...state, product, loading: false });
+  //       } catch (err) {
+  //         setState({ ...state, error: err.message, loading: false });
+  //       }
+  //     };
+  //     fetchData();
+  //   },
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+
+  //   [ state]
+  // );
 
 
     return (
@@ -130,7 +132,7 @@ function Tabs() {
             <h2>Content 1</h2>
            
             <p>
-              {product.protocals}
+              {/* {product.protocals} */}
             </p>
           </div>
 
@@ -138,7 +140,7 @@ function Tabs() {
             <h2>Content 2</h2>
            
             <p>
-              {product.qualityTesting}
+              {/* {product.qualityTesting} */}
             </p>
           </div>
 
@@ -147,7 +149,7 @@ function Tabs() {
             <h2>Content 3</h2>
            
             <p>
-              {product.materialsSafetyDataSheet}
+              {/* {product.materialsSafetyDataSheet} */}
             </p>
           </div>
 
@@ -155,7 +157,7 @@ function Tabs() {
             <h2>Content 4</h2>
            
             <p>
-              {product.applicationNotes}
+              {/* {product.applicationNotes} */}
             </p>
           </div>
   
