@@ -1,0 +1,51 @@
+.body{
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2, 1fr);
+   padding: 0%;
+   box-sizing: border-box;
+    height: 40vh;
+    margin-bottom: 1px;
+    
+    width: 30vw;
+    padding: 30px;
+}
+
+.box1{
+    grid-column-start: span 1;
+    
+    
+    padding: 0%;
+    
+    margin: 5px;
+}
+.box2{
+    grid-column-start: span 1;
+    margin: 5px;
+   
+}
+.box3{
+    
+    grid-column-start: span 1;
+   
+    margin: 5px;
+   
+    
+}
+
+.box4{
+    margin: 5px;
+}
+
+.box5{
+    margin: 5px;
+}
+.box6{
+    margin: 5px;
+}
+

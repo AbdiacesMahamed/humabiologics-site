@@ -1,0 +1,17 @@
+.body{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.container{
+    display: flex;
+    height: auto;
+    justify-content: space-around;
+    width: 60vw;
+   
+}
+
+.box{
+    margin: 5px;
+}

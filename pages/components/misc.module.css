@@ -1,0 +1,20 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    height: auto;
+}
+
+
+.box{
+    height: 80vh;
+    margin: 10px;
+    background-color: #D3D3D3;
+}
+
+@media screen and (max-width: 800px){
+    .box{
+        height: 60vh;
+        margin: 10px;
+        background-color: #D3D3D3;
+    }
+}

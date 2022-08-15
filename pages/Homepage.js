@@ -4,126 +4,31 @@ import Appbar from "./components/appBar";
 import Slider from "./components/slider";
 import Footer from "./components/footer";
 import NextLink from "next/link";
+import Grid from "./components/Grid";
+import Searchbar from "./components/SearchBar";
+import Productgrid from "./components/productGrid";
+import Applicationflex from "./components/applicationFlex";
+import Misc from "./components/misc";
 // https://humabiologics.sanity.studio/desk
 
 function HomePage() {
   return (
-    <div className={styles.body}>
+    <div >
       <Appbar></Appbar>
-
-      <div className={styles.section1}>
-        <video className={styles.fullscreen} autoPlay loop muted>
+      <Searchbar></Searchbar>
+<div className={styles.body}>
+      <video  autoPlay loop muted>
           <source src="./Bioprinting.mp4" type="video/mp4"></source>
         </video>
-      </div>
+        <Grid></Grid>
+<Productgrid></Productgrid>
+<Applicationflex></Applicationflex>
+<Misc></Misc>
+<Slider></Slider>
+<Footer></Footer>
 
-      <div className={styles.section2}>
-        <div className={styles.sideLine1}></div>
-
-        <div className={styles.biomaterialsContainer}>
-          <div>Native Human Derived Biomaterials </div>
-          <span>to Meet your Translational Needs</span>
         </div>
-        <div className={styles.sideLine2}></div>
-
-        <div className={styles.imageBar}>
-          <NextLink href="/HumanBiomaterials" passhref>
-            <Image
-              className={styles.circle}
-              width={350}
-              height={350}
-              src="/human-collagen.png"
-              alt="collagen"
-            ></Image>
-          </NextLink>
-          <NextLink href="/HumanECM" passhref>
-            <Image
-              className={styles.circle}
-              width={350}
-              height={350}
-              src="/Human-ecm.png"
-              alt="ecm"
-            ></Image>
-          </NextLink>
-          <NextLink href="/HumanGelatin" passhref>
-            <Image
-              className={styles.circle}
-              width={350}
-              height={340}
-              src="/gelatin4.png"
-              alt="geletin"
-            ></Image>
-          </NextLink>
-        </div>
-      </div>
-      <div className={styles.section3}>
-        <div className={styles.sideLine3}></div>
-        <div className={styles.sideLine4}></div>
-        <div className={styles.applications}>
-          <div>Applications</div>
-        </div>
-        <div className={styles.imageBar}>
-          <Image
-            className={styles.circle}
-            width={200}
-            height={170}
-            src="/bioink.png"
-            alt="bioink"
-          ></Image>
-          <Image
-            className={styles.circle}
-            width={200}
-            height={170}
-            src="/tissu-engineering.png"
-            alt="tissue"
-          ></Image>
-          <Image
-            className={styles.circle}
-            width={200}
-            height={170}
-            src="/organelles.png"
-            alt="organelles"
-          ></Image>
-          <Image
-            className={styles.circle}
-            width={200}
-            height={170}
-            src="/culture.png"
-            alt="src"
-          ></Image>
-          <Image
-            className={styles.circle}
-            width={200}
-            height={170}
-            src="/3dbio.png"
-            alt="3d"
-          ></Image>
-        </div>
-      </div>
-      <div className={styles.section4}>
-        <div className={styles.sideLine3}></div>
-        <div className={styles.sideLine4}></div>
-        <div className={styles.partnerText}>
-          <div>Partners</div>
-        </div>
-        <div className={styles.partnerImage}>
-          <Image
-            width={1700}
-            height={500}
-            src="/partners.png"
-            alt="partner"
-          ></Image>
-        </div>
-      </div>
-      <div className={styles.section5}>
-        <span className={styles.trusted}> Trusted by</span>
-        <span className={styles.trusted2}>Industry Leaders</span>
-        <div className={styles.sideLine5}></div>
-        <div className={styles.sideLine6}></div>
-        <Slider></Slider>
-      </div>
-      <Footer></Footer>
-      <div></div>
+        
     </div>
   );
 }
